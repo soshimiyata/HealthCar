@@ -1,0 +1,16 @@
+| メソッド   | URL                           | 概要         |
+| ------ | ----------------------------- | ---------- |
+| POST   | `/api/users`                  | ユーザー登録     |
+| POST   | `/api/auth/login`             | ログイン       |
+| GET    | `/api/users/me`               | 自分の情報取得    |
+| PUT    | `/api/users/me`               | ユーザー情報更新   |
+| DELETE | `/api/users/me`               | ユーザー削除     |
+| GET    | `/api/cars`                   | 車一覧取得      |
+| POST   | `/api/cars`                   | 車登録        |
+| GET    | `/api/cars/{id}`              | 車詳細取得      |
+| PUT    | `/api/cars/{id}`              | 車更新        |
+| DELETE | `/api/cars/{id}`              | 車削除        |
+| GET    | `/api/cars/{id}/maintenances` | メンテナンス一覧取得 |
+| POST   | `/api/cars/{id}/maintenances` | メンテナンス登録   |
+| PUT    | `/api/maintenances/{id}`      | メンテナンス更新   |
+| DELETE | `/api/maintenances/{id}`      | メンテナンス削除   |
