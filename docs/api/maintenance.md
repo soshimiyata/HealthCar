@@ -190,7 +190,7 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ---
 
-# GET /api/maintenances/{id}
+# GET /api/cars/{carId}/maintenances/{id}
 
 ## 概要
 
@@ -216,7 +216,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 | 項目 | 型    | 必須 | 説明       |
 | -- | ---- | -- | -------- |
-| id | Long | ○  | メンテナンスID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | メンテナンスID |
 
 ---
 
@@ -260,7 +261,7 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ---
 
-# PUT /api/maintenances/{id}
+# PUT /api/cars/{carId}/maintenances/{id}
 
 ## 概要
 
@@ -287,7 +288,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 | 項目 | 型    | 必須 | 説明       |
 | -- | ---- | -- | -------- |
-| id | Long | ○  | メンテナンスID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | メンテナンスID |
 
 ---
 
@@ -361,7 +363,7 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ---
 
-# DELETE /api/maintenances/{id}
+# DELETE /api/cars/{carId}/maintenances/{id}
 
 ## 概要
 
@@ -387,7 +389,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 | 項目 | 型    | 必須 | 説明       |
 | -- | ---- | -- | -------- |
-| id | Long | ○  | メンテナンスID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | メンテナンスID |
 
 ---
 

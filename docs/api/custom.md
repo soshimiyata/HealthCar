@@ -185,7 +185,7 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 ---
 
-# GET /api/customs/{id}
+# GET /api/cars/{carId}/customs/{id}
 
 ## 概要
 
@@ -211,7 +211,8 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 | 項目 | 型    | 必須 | 説明     |
 | -- | ---- | -- | ------ |
-| id | Long | ○  | カスタムID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | カスタムID |
 
 ---
 
@@ -251,7 +252,7 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 ---
 
-# PUT /api/customs/{id}
+# PUT /api/cars/{carId}/customs/{id}
 
 ## 概要
 
@@ -278,7 +279,8 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 | 項目 | 型    | 必須 | 説明     |
 | -- | ---- | -- | ------ |
-| id | Long | ○  | カスタムID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | カスタムID |
 
 ---
 
@@ -347,7 +349,7 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 ---
 
-# DELETE /api/customs/{id}
+# DELETE /api/cars/{carId}/customs/{id}
 
 ## 概要
 
@@ -373,7 +375,8 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 
 | 項目 | 型    | 必須 | 説明     |
 | -- | ---- | -- | ------ |
-| id | Long | ○  | カスタムID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | カスタムID |
 
 ---
 

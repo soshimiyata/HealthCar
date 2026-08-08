@@ -200,7 +200,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 ---
 
-# GET /api/issues/{id}
+# GET /api/cars/{carId}/issues/{id}
 
 ## 概要
 
@@ -224,7 +224,8 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 | 項目 | 型    | 必須 | 説明    |
 | -- | ---- | -- | ----- |
-| id | Long | ○  | 不具合ID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | 不具合ID |
 
 ---
 
@@ -268,7 +269,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 ---
 
-# PUT /api/issues/{id}
+# PUT /api/cars/{carId}/issues/{id}
 
 ## 概要
 
@@ -293,7 +294,8 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 | 項目 | 型    | 必須 | 説明    |
 | -- | ---- | -- | ----- |
-| id | Long | ○  | 不具合ID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | 不具合ID |
 
 ---
 
@@ -371,7 +373,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 ---
 
-# DELETE /api/issues/{id}
+# DELETE /api/cars/{carId}/issues/{id}
 
 ## 概要
 
@@ -395,7 +397,8 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 
 | 項目 | 型    | 必須 | 説明    |
 | -- | ---- | -- | ----- |
-| id | Long | ○  | 不具合ID |
+| carId | Long | ○ | 車両ID |
+| id | Long | ○ | 不具合ID |
 
 ---
 
