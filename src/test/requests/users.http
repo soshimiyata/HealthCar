@@ -1,9 +1,0 @@
-### ユーザー登録
-POST http://localhost:8080/api/users
-Content-Type: application/json
-
-{
-  "name": "soshi",
-  "email": "test@example.com",
-  "password": "password123"
-}
