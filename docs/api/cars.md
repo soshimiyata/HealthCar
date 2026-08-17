@@ -96,6 +96,148 @@
 
 ---
 
+# GET /api/cars
+
+## 概要
+
+認証ユーザーが所有する車両の一覧を取得する。
+
+**認証：必要**
+
+**認可：認証ユーザーが所有する車両のみ取得可能。**
+
+---
+
+## リクエスト
+
+### リクエストヘッダー
+
+| 項目            | 値            | 必須 | 説明          |
+| ------------- | ------------ | -- | ----------- |
+| Authorization | Bearer {JWT} | ○  | JWTアクセストークン |
+
+---
+
+### クエリパラメータ
+
+| 項目   | 型       | 必須 | 説明                   |
+| ---- | ------- | -- | -------------------- |
+| page | Integer | ×  | ページ番号（0始まり、デフォルト0）   |
+| size | Integer | ×  | 取得件数（デフォルト20）        |
+| sort | String  | ×  | ソート条件（例：`maker,asc`） |
+
+### リクエスト例
+
+```text
+GET /api/cars?page=0&size=20&sort=maker,asc
+```
+
+---
+
+# レスポンス
+
+## 200 OK
+
+### content
+
+| 項目                 | 型      | 説明    |
+| ------------------ | ------ | ----- |
+| content            | Array  | 車両一覧  |
+| content[].id       | Long   | 車両ID  |
+| content[].maker    | String | メーカー名 |
+| content[].carModel | String | 車種名   |
+
+### ページング情報
+
+| 項目                  | 型       | 説明           |
+| ------------------- | ------- | ------------ |
+| pageable            | Object  | ページング情報      |
+| pageable.pageNumber | Integer | 現在のページ番号     |
+| pageable.pageSize   | Integer | 1ページあたりの取得件数 |
+| pageable.offset     | Long    | データの開始位置     |
+| pageable.paged      | Boolean | ページングが有効か    |
+| pageable.unpaged    | Boolean | ページングが無効か    |
+
+### ページ情報
+
+| 項目               | 型       | 説明            |
+| ---------------- | ------- | ------------- |
+| totalPages       | Integer | 総ページ数         |
+| totalElements    | Long    | 総件数           |
+| last             | Boolean | 最終ページか        |
+| size             | Integer | 1ページあたりの取得件数  |
+| number           | Integer | 現在のページ番号      |
+| numberOfElements | Integer | 現在のページに含まれる件数 |
+| first            | Boolean | 最初のページか       |
+| empty            | Boolean | 結果が空か         |
+
+### ソート情報
+
+`sort` は現在のソート状態を表す。
+
+| 項目       | 型       | 説明         |
+| -------- | ------- | ---------- |
+| sorted   | Boolean | ソートされているか  |
+| empty    | Boolean | ソート条件が空か   |
+| unsorted | Boolean | ソートされていないか |
+
+---
+
+## レスポンス例
+
+```json
+{
+  "content": [
+    {
+      "id": 1,
+      "maker": "MAZDA",
+      "carModel": "デミオ"
+    },
+    {
+      "id": 2,
+      "maker": "TOYOTA",
+      "carModel": "86"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": {
+      "sorted": true,
+      "empty": false,
+      "unsorted": false
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 1,
+  "totalElements": 2,
+  "last": true,
+  "size": 20,
+  "number": 0,
+  "sort": {
+    "sorted": true,
+    "empty": false,
+    "unsorted": false
+  },
+  "numberOfElements": 2,
+  "first": true,
+  "empty": false
+}
+```
+
+---
+
+## ステータスコード
+
+| コード | 説明   |
+| --- | ---- |
+| 200 | 取得成功 |
+| 401 | 未認証  |
+
+---
+
 # GET /api/cars/{id}
 
 ## 概要
