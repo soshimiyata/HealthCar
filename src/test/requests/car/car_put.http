@@ -1,0 +1,12 @@
+PUT http://localhost:8080/api/cars/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg2OTc2MjI0LCJleHAiOjE3ODY5Nzk4MjR9.9ifhLNsiKm5u7wogoK-_zB5VL8qHtMWe7SpuIMNRZp3omv18Z-UnVjwOG2dGAyT4
+
+{
+  "maker": "MAZDA",
+  "carModel": "MAZDA2",
+  "modelYear": 2019,
+  "description": "メインカー",
+  "odometer": 95000,
+  "status": 0
+}

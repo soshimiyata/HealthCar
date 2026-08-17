@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/cars?page=0&size=20&sort=id,desc
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg2ODAzNTc2LCJleHAiOjE3ODY4MDcxNzZ9.X3krhnR3edkuvTc0_-ZUGI1OUZeHzkfFe6tpuSuzpJHcRcEvs33qeP0-FZINekM6

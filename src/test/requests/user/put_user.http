@@ -1,0 +1,9 @@
+PUT http://localhost:8080/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI3IiwiaWF0IjoxNzg2NzEzMDY0LCJleHAiOjE3ODY3MTY2NjR9.cu0hlO3sSjlQoRJQGHCexhKoNm5ya0GGQ8GmF6cCvnuJWOBbhmLintIV8OdIP2hE
+
+{
+  "name": "soshi_new",
+  "email": "new@example.com",
+  "password": "password456"
+}

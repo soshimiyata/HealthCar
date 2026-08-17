@@ -1,0 +1,12 @@
+POST http://localhost:8080/api/cars
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg2ODAwMTE2LCJleHAiOjE3ODY4MDM3MTZ9.im6ZyYgP4MeZmfsj7trYoUc88_y_Kl4kJGaoPXmr8lAXMf6-qBrsi9QP4cxFIEDe
+
+{
+  "maker": "MAZDA",
+  "carModel": "デミオ",
+  "modelYear": 2016,
+  "description": "普段乗り",
+  "odometer": 82000,
+  "status": 0
+}
