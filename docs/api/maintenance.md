@@ -85,7 +85,6 @@
 
 | 項目              | 条件         |
 | --------------- | ---------- |
-| title           | 必須・100文字以内 |
 | maintenanceTypeId | 必須  |
 | maintenanceDate | 必須         |
 | odometer        | 0以上        |
