@@ -3,6 +3,7 @@ package com.example.healthcar.controller;
 import com.example.healthcar.dto.MaintenanceCreateRequest;
 import com.example.healthcar.dto.MaintenanceResponse;
 import com.example.healthcar.dto.MaintenanceListResponse;
+import com.example.healthcar.dto.MaintenanceDetailResponse;
 import com.example.healthcar.service.MaintenanceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -56,5 +57,21 @@ public class MaintenanceController {
         carId,
         userId,
         pageable);
+  }
+
+  @GetMapping("/{maintenanceId}")
+  public ResponseEntity<MaintenanceDetailResponse> getMaintenance(
+      @PathVariable Long carId,
+      @PathVariable Long maintenanceId,
+      Authentication authentication) {
+
+    Long userId = Long.valueOf(authentication.getName());
+
+    MaintenanceDetailResponse response = maintenanceService.getMaintenance(
+        carId,
+        maintenanceId,
+        userId);
+
+    return ResponseEntity.ok(response);
   }
 }

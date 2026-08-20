@@ -3,6 +3,7 @@ package com.example.healthcar.service;
 import com.example.healthcar.dto.MaintenanceCreateRequest;
 import com.example.healthcar.dto.MaintenanceResponse;
 import com.example.healthcar.dto.MaintenanceListResponse;
+import com.example.healthcar.dto.MaintenanceDetailResponse;
 import com.example.healthcar.entity.Maintenance;
 import com.example.healthcar.entity.MaintenanceType;
 import com.example.healthcar.repository.CarRepository;
@@ -83,5 +84,19 @@ public class MaintenanceService {
     return maintenanceRepository
         .findByCarId(carId, pageable)
         .map(MaintenanceListResponse::from);
+  }
+
+  public MaintenanceDetailResponse getMaintenance(
+      Long carId,
+      Long maintenanceId,
+      Long userId) {
+
+    // まず車両の所有者を確認
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
+
+    return maintenanceRepository
+        .findDetail(maintenanceId, carId)
+        .orElseThrow(() -> new RuntimeException("Maintenance not found"));
   }
 }
