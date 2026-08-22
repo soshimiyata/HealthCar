@@ -1,0 +1,11 @@
+PUT http://localhost:8080/api/cars/1/maintenances/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3MzI0ODIzLCJleHAiOjE3ODczMjg0MjN9.U1LWMIKycugZjeIlWvHjQIR4iKRrqCPe_maFCywOLF4vCyg_KcFjwWMcf1XuMwkZ
+
+{
+  "maintenanceTypeId": 1,
+  "description": "オイル・エレメント交換",
+  "maintenanceDate": "2026-08-05",
+  "odometer": 82600,
+  "cost": 8500
+}

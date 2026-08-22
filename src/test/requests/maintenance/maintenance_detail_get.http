@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/cars/1/maintenances/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3MjM1MDI1LCJleHAiOjE3ODcyMzg2MjV9.lLYn59_3ktHSzCk1ezPAj0eoWw9zJeCuG7BjhW33cpVkZ3Xa4e8DNg6mYTcHHrYp

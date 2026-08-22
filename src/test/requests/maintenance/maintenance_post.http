@@ -1,0 +1,11 @@
+POST http://localhost:8080/api/cars/1/maintenances
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3MTUxOTA5LCJleHAiOjE3ODcxNTU1MDl9.VUPc4WbAKUB0pjt1jfq7xhT7s8md2k114GywD6n5iXqTEPQgx6_KlQZmWIGbUkXM
+
+{
+  "maintenanceTypeId": 2,
+  "description": "夏タイヤから冬タイヤへ交換",
+  "maintenanceDate": "2026-08-10",
+  "odometer": 82650,
+  "cost": 4400
+}
