@@ -1,6 +1,7 @@
 package com.example.healthcar.service;
 
 import com.example.healthcar.dto.MaintenanceCreateRequest;
+import com.example.healthcar.dto.MaintenanceUpdateRequest;
 import com.example.healthcar.dto.MaintenanceResponse;
 import com.example.healthcar.dto.MaintenanceListResponse;
 import com.example.healthcar.dto.MaintenanceDetailResponse;
@@ -94,6 +95,37 @@ public class MaintenanceService {
     // まず車両の所有者を確認
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
+
+    return maintenanceRepository
+        .findDetail(maintenanceId, carId)
+        .orElseThrow(() -> new RuntimeException("Maintenance not found"));
+  }
+
+  public MaintenanceDetailResponse updateMaintenance(
+      Long carId,
+      Long maintenanceId,
+      MaintenanceUpdateRequest request,
+      Long userId) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
+
+    Maintenance maintenance = maintenanceRepository
+        .findByIdAndCarId(maintenanceId, carId)
+        .orElseThrow(() -> new RuntimeException("Maintenance not found"));
+
+    // メンテナンス種別を取得
+    MaintenanceType maintenanceType = maintenanceTypeRepository
+        .findById(request.getMaintenanceTypeId())
+        .orElseThrow(() -> new RuntimeException("Maintenance type not found"));
+
+    maintenance.setMaintenanceType(maintenanceType);
+    maintenance.setDescription(request.getDescription());
+    maintenance.setMaintenanceDate(request.getMaintenanceDate());
+    maintenance.setOdometer(request.getOdometer());
+    maintenance.setCost(request.getCost());
+
+    maintenanceRepository.save(maintenance);
 
     return maintenanceRepository
         .findDetail(maintenanceId, carId)

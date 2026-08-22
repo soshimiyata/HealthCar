@@ -15,6 +15,8 @@ public interface MaintenanceRepository
     extends JpaRepository<Maintenance, Long> {
   Page<Maintenance> findByCarId(Long carId, Pageable pageable);
 
+  Optional<Maintenance> findByIdAndCarId(Long maintenanceId, Long carId);
+
   @Query("""
           SELECT new com.example.healthcar.dto.MaintenanceDetailResponse(
               m.id,
