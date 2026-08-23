@@ -1,0 +1,14 @@
+PUT http://localhost:8080/api/cars/1/parts/4
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDkyOTQzLCJleHAiOjE3ODc0OTY1NDN9.6vYdEaB5o-u3B0kUh5YQatXkq_w3Gbq4CjJQEp6xb84U9KGB528cgt-4Sbo-kZFv
+Content-Type: application/json
+
+{
+  "category": 1,
+  "name": "BLITZ DAMPER ZZ-R",
+  "maker": "BLITZ",
+  "installedAt": "2026-08-10",
+  "price": 125000,
+  "description": "全長調整式 車高調・減衰調整機能付き",
+  "imageUrl": "https://example.com/images/blitz-zzr-new.jpg",
+  "status": 0
+}

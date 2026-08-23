@@ -41,13 +41,14 @@
 
 | 項目          | 型       | 必須 | 説明      |
 | ----------- | ------- | -- | ------- |
-| category    | Integer  | ○  | パーツカテゴリ |
+| category    | Short  | ○  | パーツカテゴリ |
 | name        | String  | ○  | パーツ名    |
 | maker       | String  | ×  | メーカー名   |
 | installedAt | Date    | ×  | 装着日     |
 | price       | Integer | ×  | 購入価格    |
 | description | String  | ×  | メモ      |
-| status      | Integer | ○  | 装着状態    |
+| imageUrl    | String  | ×  | パーツ画像のURL |
+| status      | Short | ○  | 装着状態    |
 
 #### リクエスト例
 
@@ -59,6 +60,7 @@
   "installedAt": "2026-08-01",
   "price": 80000,
   "description": "17インチ 8J +35",
+  "imageUrl": "https://example.com/images/volcano.jpg",
   "status": 0
 }
 ```
@@ -104,6 +106,7 @@
 | name     | 必須・100文字以内     |
 | maker    | 100文字以内        |
 | price    | 0以上            |
+| imageUrl | 任意・URL形式 |
 | status   | 必須・定義されたステータスのみ |
 
 ---
@@ -143,8 +146,8 @@
 | page     | Integer | ×  | ページ番号（0始まり、デフォルト0）        |
 | size     | Integer | ×  | 取得件数（デフォルト20）             |
 | sort     | String  | ×  | ソート条件（例：installedAt,desc） |
-| status   | Integer | ×  | 装着状態で絞り込み                 |
-| category | Integer  | ×  | パーツカテゴリで絞り込み              |
+| status   | Short | ×  | 装着状態で絞り込み                 |
+| category | Short  | ×  | パーツカテゴリで絞り込み              |
 
 #### リクエスト例
 
@@ -179,6 +182,7 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
       "installedAt": "2026-08-01",
       "price": 80000,
       "description": "17インチ 8J +35",
+      "imageUrl": "https://example.com/images/volcano.jpg",
       "status": 0
     },
     {
@@ -189,6 +193,7 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
       "installedAt": "2026-07-15",
       "price": 120000,
       "description": null,
+      "imageUrl": "https://example.com/images/HKS.jpg",
       "status": 0
     }
   ],
@@ -247,13 +252,14 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
 | 項目          | 型       | 説明      |
 | ----------- | ------- | ------- |
 | id          | Long    | パーツID   |
-| category    | Integer  | パーツカテゴリ |
+| category    | Short  | パーツカテゴリ |
 | name        | String  | パーツ名    |
 | maker       | String  | メーカー名   |
 | installedAt | Date    | 装着日     |
 | price       | Integer | 購入価格    |
 | description | String  | メモ      |
-| status      | Integer | 装着状態    |
+| imageUrl | String | パーツ画像のURL |
+| status      | Short | 装着状態    |
 
 #### レスポンス例
 
@@ -266,6 +272,7 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
   "installedAt": "2026-08-01",
   "price": 80000,
   "description": "17インチ 8J +35",
+  "imageUrl": "https://example.com/images/volcano.jpg",
   "status": 0
 }
 ```
@@ -316,13 +323,14 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
 
 | 項目          | 型       | 必須 | 説明      |
 | ----------- | ------- | -- | ------- |
-| category    | Integer  | ○  | パーツカテゴリ |
+| category    | Short  | ○  | パーツカテゴリ |
 | name        | String  | ○  | パーツ名    |
 | maker       | String  | ×  | メーカー名   |
 | installedAt | Date    | ×  | 装着日     |
 | price       | Integer | ×  | 購入価格    |
 | description | String  | ×  | メモ      |
-| status      | Integer | ○  | 装着状態    |
+|  imageUrl   | String  | ×  | パーツ画像のURL |
+| status      | Short | ○  | 装着状態    |
 
 #### リクエスト例
 
@@ -334,6 +342,7 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
   "installedAt": "2026-08-01",
   "price": 85000,
   "description": "17インチ 8J +35、タイヤ交換済み",
+  "imageUrl": "https://example.com/images/volcano-new.jpg",
   "status": 0
 }
 ```

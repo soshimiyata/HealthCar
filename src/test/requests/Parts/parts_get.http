@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/cars/1/parts?page=0&size=20
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDg4MzMzLCJleHAiOjE3ODc0OTE5MzN9.SfNYJw9KClMIIExvKYOvYZILrTWvG0yQWGkO092PjzHRPXuwVPTuHAIQlEm87Lv-
