@@ -1,0 +1,10 @@
+PUT http://localhost:8080/api/cars/1/customs/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDEyMTAxLCJleHAiOjE3ODc0MTU3MDF9.WBEU1TJjDNtl0d_uqFpsvv7gau5PLgD5OPbKVdpyAdK7UUjReAf5KzKvFqLMsdWA
+Content-Type: application/json
+
+{
+  "title": "車高調交換",
+  "description": "減衰調整実施",
+  "customDate": "2026-08-05",
+  "cost": 120000
+}

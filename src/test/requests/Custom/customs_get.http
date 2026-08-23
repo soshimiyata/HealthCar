@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/cars/1/customs
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDA3NTEyLCJleHAiOjE3ODc0MTExMTJ9.X1_7HnMq72d0MRcR4omcP_xq9k7XTeU6Keuso8LixROjXeQVq1D6Rcywh3FYl5_X

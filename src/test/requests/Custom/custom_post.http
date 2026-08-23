@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/cars/1/customs
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDA1MjAzLCJleHAiOjE3ODc0MDg4MDN9.TOhKvlJFronIZIvSaaOuJ5E3GNi4Xj5moL7F6a9IOQH-vr7F7YjnKhUFDXFBt9Hx
+Content-Type: application/json
+
+{
+  "title": "車高調交換",
+  "description": "BLITZ DAMPER ZZ-Rを装着",
+  "customDate": "2026-08-05",
+  "cost": 120000
+}
