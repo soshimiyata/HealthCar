@@ -35,6 +35,7 @@
 | description | String | × | 詳細・症状・メモ |
 | status | Integer | × | 対応状況（0:未着手、1:対応中、2:解決済み） |
 | priority | Integer | × | 優先度（0:高、1:中、2:低） |
+| imageUrl | String | × | 不具合画像 |
 | occurredAt | Date | × | 発生日・気付いた日 |
 | resolvedAt | Date | × | 解決日 |
 
@@ -46,6 +47,7 @@
   "description": "低速走行時にフロントから異音がする",
   "status": 0,
   "priority": 0,
+  "imageUrl": "https://example.com/images/issue-front.jpg",
   "occurredAt": "2026-08-08"
 }
 ```
@@ -62,8 +64,6 @@
 | title      | String  | 不具合名      |
 | status     | Integer | 対応状況      |
 | priority   | Integer | 優先度       |
-| occurredAt | Date    | 発生日・気付いた日 |
-| resolvedAt | Date    | 解決日       |
 
 
 #### レスポンス例
@@ -73,9 +73,7 @@
   "id": 1,
   "title": "異音",
   "status": 0,
-  "priority": 0,
-  "occurredAt": "2026-08-08",
-  "resolvedAt": null
+  "priority": 0
 }
 ```
 
@@ -240,6 +238,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 | description | String  | 詳細・症状・メモ  |
 | status      | Integer | 対応状況      |
 | priority    | Integer | 優先度       |
+| imageUrl    | String  | 不具合画像 |
 | occurredAt  | Date    | 発生日・気付いた日 |
 | resolvedAt  | Date    | 解決日       |
 
@@ -252,6 +251,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
   "description": "低速走行時に右前方から異音がする",
   "status": 1,
   "priority": 0,
+  "imageUrl": "https://example.com/images/issue-front.jpg",
   "occurredAt": "2026-08-01",
   "resolvedAt": null
 }
@@ -307,6 +307,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
 | description | String  | ×  | 詳細・症状・メモ  |
 | status      | Integer | ○  | 対応状況      |
 | priority    | Integer | ○  | 優先度       |
+| imageUrl    | String  | ×  | 不具合画像 |
 | occurredAt  | Date    | ×  | 発生日・気付いた日 |
 | resolvedAt  | Date    | ×  | 解決日       |
 
@@ -318,6 +319,7 @@ GET /api/cars/1/issues?page=0&size=20&sort=priority,asc
   "description": "右前方からの異音。原因を確認中",
   "status": 1,
   "priority": 0,
+  "imageUrl": "https://example.com/images/issue-front-new.jpg",
   "occurredAt": "2026-08-01",
   "resolvedAt": null
 }
