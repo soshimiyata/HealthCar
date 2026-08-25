@@ -1,11 +1,11 @@
 package com.example.healthcar.controller;
 
-import com.example.healthcar.dto.CarIssueCreateRequest;
-import com.example.healthcar.dto.CarIssueCreateResponse;
-import com.example.healthcar.dto.CarIssueDetailResponse;
-import com.example.healthcar.dto.CarIssueUpdateRequest;
-import com.example.healthcar.dto.CarIssueUpdateResponse;
-import com.example.healthcar.dto.CarIssueListResponse;
+import com.example.healthcar.dto.carissue.CarIssueCreateRequest;
+import com.example.healthcar.dto.carissue.CarIssueCreateResponse;
+import com.example.healthcar.dto.carissue.CarIssueDetailResponse;
+import com.example.healthcar.dto.carissue.CarIssueUpdateRequest;
+import com.example.healthcar.dto.carissue.CarIssueUpdateResponse;
+import com.example.healthcar.dto.carissue.CarIssueListResponse;
 import com.example.healthcar.service.CarIssueService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;

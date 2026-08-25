@@ -1,10 +1,10 @@
 package com.example.healthcar.controller;
 
-import com.example.healthcar.dto.MaintenanceCreateRequest;
-import com.example.healthcar.dto.MaintenanceUpdateRequest;
-import com.example.healthcar.dto.MaintenanceResponse;
-import com.example.healthcar.dto.MaintenanceListResponse;
-import com.example.healthcar.dto.MaintenanceDetailResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceCreateRequest;
+import com.example.healthcar.dto.maintenance.MaintenanceUpdateRequest;
+import com.example.healthcar.dto.maintenance.MaintenanceResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceListResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceDetailResponse;
 import com.example.healthcar.service.MaintenanceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

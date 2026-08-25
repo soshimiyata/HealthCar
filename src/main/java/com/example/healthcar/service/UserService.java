@@ -1,10 +1,10 @@
 package com.example.healthcar.service;
 
-import com.example.healthcar.dto.UserResponse;
-import com.example.healthcar.dto.UserCreateRequest;
+import com.example.healthcar.dto.user.UserResponse;
+import com.example.healthcar.dto.user.UserCreateRequest;
 import com.example.healthcar.entity.User;
 import com.example.healthcar.repository.UserRepository;
-import com.example.healthcar.dto.UserUpdateRequest;
+import com.example.healthcar.dto.user.UserUpdateRequest;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

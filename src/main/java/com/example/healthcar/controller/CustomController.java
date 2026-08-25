@@ -1,11 +1,11 @@
 package com.example.healthcar.controller;
 
-import com.example.healthcar.dto.CustomCreateRequest;
-import com.example.healthcar.dto.CustomResponse;
-import com.example.healthcar.dto.CustomDetailResponse;
-import com.example.healthcar.dto.CustomUpdateRequest;
+import com.example.healthcar.dto.custom.CustomCreateRequest;
+import com.example.healthcar.dto.custom.CustomResponse;
+import com.example.healthcar.dto.custom.CustomDetailResponse;
+import com.example.healthcar.dto.custom.CustomUpdateRequest;
 import com.example.healthcar.service.CustomService;
-import com.example.healthcar.dto.CustomListResponse;
+import com.example.healthcar.dto.custom.CustomListResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

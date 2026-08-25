@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.example.healthcar.dto.PartDetailResponse;
+import com.example.healthcar.dto.part.PartDetailResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
@@ -17,7 +17,7 @@ public interface PartRepository extends JpaRepository<Part, Long> {
   Page<Part> findByCarId(Long carId, Pageable pageable);
 
   @Query("""
-      SELECT new com.example.healthcar.dto.PartDetailResponse(
+      SELECT new com.example.healthcar.dto.part.PartDetailResponse(
           p.id,
           p.category,
           p.name,

@@ -1,8 +1,8 @@
 package com.example.healthcar.controller;
 
-import com.example.healthcar.dto.UserResponse;
-import com.example.healthcar.dto.UserCreateRequest;
-import com.example.healthcar.dto.UserUpdateRequest;
+import com.example.healthcar.dto.user.UserResponse;
+import com.example.healthcar.dto.user.UserCreateRequest;
+import com.example.healthcar.dto.user.UserUpdateRequest;
 import com.example.healthcar.service.UserService;
 
 import jakarta.validation.Valid;

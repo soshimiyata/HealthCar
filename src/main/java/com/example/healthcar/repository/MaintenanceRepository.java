@@ -1,7 +1,7 @@
 package com.example.healthcar.repository;
 
 import com.example.healthcar.entity.Maintenance;
-import com.example.healthcar.dto.MaintenanceDetailResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceDetailResponse;
 import com.example.healthcar.entity.MaintenanceType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +18,7 @@ public interface MaintenanceRepository
   Optional<Maintenance> findByIdAndCarId(Long maintenanceId, Long carId);
 
   @Query("""
-          SELECT new com.example.healthcar.dto.MaintenanceDetailResponse(
+          SELECT new com.example.healthcar.dto.maintenance.MaintenanceDetailResponse(
               m.id,
               m.maintenanceType.id,
               mt.name,

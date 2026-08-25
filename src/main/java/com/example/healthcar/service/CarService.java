@@ -1,9 +1,9 @@
 package com.example.healthcar.service;
 
-import com.example.healthcar.dto.CarCreateRequest;
-import com.example.healthcar.dto.CarResponse;
-import com.example.healthcar.dto.CarDetailResponse;
-import com.example.healthcar.dto.CarUpdateRequest;
+import com.example.healthcar.dto.car.CarCreateRequest;
+import com.example.healthcar.dto.car.CarResponse;
+import com.example.healthcar.dto.car.CarDetailResponse;
+import com.example.healthcar.dto.car.CarUpdateRequest;
 import com.example.healthcar.entity.Car;
 import com.example.healthcar.repository.CarRepository;
 import org.springframework.data.domain.Page;

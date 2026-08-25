@@ -1,10 +1,10 @@
 package com.example.healthcar.service;
 
-import com.example.healthcar.dto.MaintenanceCreateRequest;
-import com.example.healthcar.dto.MaintenanceUpdateRequest;
-import com.example.healthcar.dto.MaintenanceResponse;
-import com.example.healthcar.dto.MaintenanceListResponse;
-import com.example.healthcar.dto.MaintenanceDetailResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceCreateRequest;
+import com.example.healthcar.dto.maintenance.MaintenanceUpdateRequest;
+import com.example.healthcar.dto.maintenance.MaintenanceResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceListResponse;
+import com.example.healthcar.dto.maintenance.MaintenanceDetailResponse;
 import com.example.healthcar.entity.Maintenance;
 import com.example.healthcar.entity.MaintenanceType;
 import com.example.healthcar.repository.CarRepository;

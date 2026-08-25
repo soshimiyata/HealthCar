@@ -1,9 +1,9 @@
 package com.example.healthcar.controller;
 
-import com.example.healthcar.dto.CarCreateRequest;
-import com.example.healthcar.dto.CarUpdateRequest;
-import com.example.healthcar.dto.CarResponse;
-import com.example.healthcar.dto.CarDetailResponse;
+import com.example.healthcar.dto.car.CarCreateRequest;
+import com.example.healthcar.dto.car.CarUpdateRequest;
+import com.example.healthcar.dto.car.CarResponse;
+import com.example.healthcar.dto.car.CarDetailResponse;
 import com.example.healthcar.service.CarService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
