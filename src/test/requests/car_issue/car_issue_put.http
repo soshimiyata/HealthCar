@@ -1,0 +1,13 @@
+PUT http://localhost:8080/api/cars/1/issues/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NjY1NjkwLCJleHAiOjE3ODc2NjkyOTB9._O9KwQbWtXhxscFsNnnrvB64JLUq1crQJdrsec9rOudOvndtGNvhqYTXIfnNiGod
+Content-Type: application/json
+
+{
+  "title": "異音",
+  "description": "右前方からの異音。原因を確認中",
+  "status": 1,
+  "priority": 0,
+  "imageUrl": "https://example.com/images/issue-front-new.jpg",
+  "occurredAt": "2026-08-08",
+  "resolvedAt": null
+}

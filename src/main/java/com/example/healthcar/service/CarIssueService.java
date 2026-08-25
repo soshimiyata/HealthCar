@@ -3,6 +3,9 @@ package com.example.healthcar.service;
 import com.example.healthcar.dto.CarIssueCreateRequest;
 import com.example.healthcar.dto.CarIssueCreateResponse;
 import com.example.healthcar.dto.CarIssueListResponse;
+import com.example.healthcar.dto.CarIssueDetailResponse;
+import com.example.healthcar.dto.CarIssueUpdateRequest;
+import com.example.healthcar.dto.CarIssueUpdateResponse;
 import com.example.healthcar.entity.CarIssue;
 import com.example.healthcar.repository.CarIssueRepository;
 import com.example.healthcar.repository.CarRepository;
@@ -64,5 +67,46 @@ public class CarIssueService {
     return carIssueRepository
         .findByCarId(carId, pageable)
         .map(CarIssueListResponse::from);
+  }
+
+  public CarIssueDetailResponse getIssue(
+      Long carId,
+      Long issueId,
+      Long userId) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
+
+    CarIssue issue = carIssueRepository
+        .findByIdAndCarId(issueId, carId)
+        .orElseThrow(() -> new RuntimeException("Issue not found"));
+
+    return CarIssueDetailResponse.from(issue);
+  }
+
+  public CarIssueUpdateResponse updateIssue(
+      Long carId,
+      Long issueId,
+      Long userId,
+      CarIssueUpdateRequest request) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
+
+    CarIssue issue = carIssueRepository
+        .findByIdAndCarId(issueId, carId)
+        .orElseThrow(() -> new RuntimeException("Issue not found"));
+
+    issue.setTitle(request.getTitle());
+    issue.setDescription(request.getDescription());
+    issue.setStatus(request.getStatus());
+    issue.setPriority(request.getPriority());
+    issue.setImageUrl(request.getImageUrl());
+    issue.setOccurredAt(request.getOccurredAt());
+    issue.setResolvedAt(request.getResolvedAt());
+
+    carIssueRepository.save(issue);
+
+    return CarIssueUpdateResponse.from(issue);
   }
 }

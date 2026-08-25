@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/cars/1/issues/1
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NjYzMzA5LCJleHAiOjE3ODc2NjY5MDl9.efY1svzdokL1_xVQNPO3wfhA706pg1fg-wX-6WnkW_dI69AjImo7wVKNuf8f91tt

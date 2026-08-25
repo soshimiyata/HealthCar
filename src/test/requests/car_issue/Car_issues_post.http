@@ -1,0 +1,12 @@
+POST http://localhost:8080/api/cars/1/issues
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NTc2ODY4LCJleHAiOjE3ODc1ODA0Njh9.fDikqtYYZiWRULovabdjs7z6j0ECgNdOg6w2TWwafO-qqQTHeltwyPMFjnfzSTdX
+Content-Type: application/json
+
+{
+  "title": "異音",
+  "description": "低速走行時にフロントから異音がする",
+  "status": 0,
+  "priority": 0,
+  "imageUrl": "https://example.com/images/issue-front.jpg",
+  "occurredAt": "2026-08-08"
+}
