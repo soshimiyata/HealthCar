@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: healthcar-postgres
+    environment:
+      POSTGRES_DB: healthcar
+      POSTGRES_USER: healthcar
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - healthcar-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  healthcar-postgres-data:
