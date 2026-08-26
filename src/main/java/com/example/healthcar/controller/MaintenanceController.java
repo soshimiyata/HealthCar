@@ -1,5 +1,7 @@
 package com.example.healthcar.controller;
 
+import jakarta.validation.Valid;
+
 import com.example.healthcar.dto.maintenance.MaintenanceCreateRequest;
 import com.example.healthcar.dto.maintenance.MaintenanceUpdateRequest;
 import com.example.healthcar.dto.maintenance.MaintenanceResponse;
@@ -29,7 +31,7 @@ public class MaintenanceController {
   @PostMapping
   public ResponseEntity<MaintenanceResponse> createMaintenance(
       @PathVariable Long carId,
-      @RequestBody MaintenanceCreateRequest request,
+      @Valid @RequestBody MaintenanceCreateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());
@@ -80,7 +82,7 @@ public class MaintenanceController {
   public ResponseEntity<MaintenanceDetailResponse> updateMaintenance(
       @PathVariable Long carId,
       @PathVariable Long maintenanceId,
-      @RequestBody MaintenanceUpdateRequest request,
+      @Valid @RequestBody MaintenanceUpdateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());

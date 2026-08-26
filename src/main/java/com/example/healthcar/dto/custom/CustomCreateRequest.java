@@ -1,12 +1,21 @@
 package com.example.healthcar.dto.custom;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class CustomCreateRequest {
 
+  @NotBlank
+  @Size(max = 100)
   private String title;
   private String description;
+  @NotNull
   private LocalDate customDate;
+  @PositiveOrZero
   private Integer cost;
 
   public String getTitle() {

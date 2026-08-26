@@ -1,5 +1,7 @@
 package com.example.healthcar.controller;
 
+import jakarta.validation.Valid;
+
 import com.example.healthcar.dto.custom.CustomCreateRequest;
 import com.example.healthcar.dto.custom.CustomResponse;
 import com.example.healthcar.dto.custom.CustomDetailResponse;
@@ -27,7 +29,7 @@ public class CustomController {
   @PostMapping
   public ResponseEntity<CustomResponse> createCustom(
       @PathVariable Long carId,
-      @RequestBody CustomCreateRequest request,
+      @Valid @RequestBody CustomCreateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());
@@ -70,7 +72,7 @@ public class CustomController {
   public ResponseEntity<CustomResponse> updateCustom(
       @PathVariable Long carId,
       @PathVariable Long customId,
-      @RequestBody CustomUpdateRequest request,
+      @Valid @RequestBody CustomUpdateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());

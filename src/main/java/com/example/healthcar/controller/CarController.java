@@ -61,7 +61,7 @@ public class CarController {
   @PutMapping("/{carId}")
   public ResponseEntity<CarResponse> updateCar(
       @PathVariable Long carId,
-      @RequestBody CarUpdateRequest request,
+      @Valid @RequestBody CarUpdateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());

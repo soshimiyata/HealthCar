@@ -1,13 +1,22 @@
 package com.example.healthcar.dto.maintenance;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.time.LocalDate;
 
 public class MaintenanceCreateRequest {
 
+  @NotNull
+  @Positive
   private Long maintenanceTypeId;
   private String description;
+  @NotNull
   private LocalDate maintenanceDate;
+  @PositiveOrZero
   private Integer odometer;
+  @PositiveOrZero
   private Integer cost;
 
   public Long getMaintenanceTypeId() {

@@ -29,7 +29,7 @@ public class CarIssueController {
   @PostMapping
   public ResponseEntity<CarIssueCreateResponse> createIssue(
       @PathVariable Long carId,
-      @RequestBody CarIssueCreateRequest request,
+      @Valid @RequestBody CarIssueCreateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());

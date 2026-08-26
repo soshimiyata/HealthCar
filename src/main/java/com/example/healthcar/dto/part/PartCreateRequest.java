@@ -1,16 +1,35 @@
 package com.example.healthcar.dto.part;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
+
 import java.time.LocalDate;
 
 public class PartCreateRequest {
 
+  @NotNull
+  @Min(0)
+  @Max(9)
   private Short category;
+  @NotBlank
+  @Size(max = 100)
   private String name;
+  @Size(max = 100)
   private String maker;
   private LocalDate installedAt;
+  @PositiveOrZero
   private Integer price;
   private String description;
+  @URL
   private String imageUrl;
+  @NotNull
+  @Min(0)
+  @Max(4)
   private Short status;
 
   public Short getCategory() {

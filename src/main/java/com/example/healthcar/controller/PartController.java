@@ -1,5 +1,7 @@
 package com.example.healthcar.controller;
 
+import jakarta.validation.Valid;
+
 import com.example.healthcar.dto.part.PartCreateRequest;
 import com.example.healthcar.dto.part.PartResponse;
 import com.example.healthcar.dto.part.PartListResponse;
@@ -28,7 +30,7 @@ public class PartController {
   @PostMapping
   public ResponseEntity<PartResponse> createPart(
       @PathVariable Long carId,
-      @RequestBody PartCreateRequest request,
+      @Valid @RequestBody PartCreateRequest request,
       Authentication authentication) {
 
     Long userId = Long.valueOf(authentication.getName());
@@ -65,7 +67,7 @@ public class PartController {
   public ResponseEntity<PartUpdateResponse> updatePart(
       @PathVariable Long carId,
       @PathVariable Long id,
-      @RequestBody PartUpdateRequest request) {
+      @Valid @RequestBody PartUpdateRequest request) {
 
     PartUpdateResponse response = partService.updatePart(carId, id, request);
 

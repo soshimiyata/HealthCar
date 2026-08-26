@@ -1,12 +1,24 @@
 package com.example.healthcar.dto.carissue;
 
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class CarIssueCreateRequest {
 
+  @NotBlank
+  @Size(max = 100)
   private String title;
   private String description;
+  @Min(0)
+  @Max(2)
   private Short status;
+  @Min(0)
+  @Max(2)
   private Short priority;
   private String imageUrl;
   private LocalDate occurredAt;
@@ -66,5 +78,10 @@ public class CarIssueCreateRequest {
 
   public void setResolvedAt(LocalDate resolvedAt) {
     this.resolvedAt = resolvedAt;
+  }
+  @AssertTrue
+  public boolean isResolvedAtValid() {
+    short effectiveStatus = status == null ? 0 : status;
+    return effectiveStatus == 2 ? resolvedAt != null : resolvedAt == null;
   }
 }

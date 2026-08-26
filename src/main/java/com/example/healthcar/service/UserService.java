@@ -75,7 +75,9 @@ public class UserService {
     user.setEmail(request.getEmail());
 
     // パスワードはハッシュ化して保存
-    user.setPassword(passwordEncoder.encode(request.getPassword()));
+    if (request.getPassword() != null) {
+      user.setPassword(passwordEncoder.encode(request.getPassword()));
+    }
 
     User savedUser = userRepository.save(user);
 

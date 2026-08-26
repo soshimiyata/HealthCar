@@ -1,12 +1,27 @@
 package com.example.healthcar.dto.car;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+
 public class CarUpdateRequest {
 
+  @NotBlank
+  @Size(max = 50)
   private String maker;
+  @NotBlank
+  @Size(max = 100)
   private String carModel;
   private Integer modelYear;
   private String description;
+  @PositiveOrZero
   private Integer odometer;
+  @NotNull
+  @Min(0)
+  @Max(2)
   private Short status;
 
   public String getMaker() {
