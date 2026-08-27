@@ -159,7 +159,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
       "maintenanceTypeName": "オイル交換",
       "maintenanceDate": "2026-08-05",
       "odometer": 82500,
-      "cost": 7800
+      "cost": 7800,
+      "imageUrl": "https://example.com/oilChange.jpg"
     },
     {
       "id": 11,
@@ -167,7 +168,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
       "maintenanceTypeName": "タイヤローテーション",
       "maintenanceDate": "2026-06-15",
       "odometer": 80000,
-      "cost": 3000
+      "cost": 3000,
+      "imageUrl": null
     }
   ],
   "page": 0,
@@ -244,7 +246,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
   "description": "エンジンオイル・オイルフィルター交換",
   "maintenanceDate": "2026-08-05",
   "odometer": 82500,
-  "cost": 7800
+  "cost": 7800,
+  "imageUrl": "https://example.com/oilChange.jpg"
 }
 ```
 

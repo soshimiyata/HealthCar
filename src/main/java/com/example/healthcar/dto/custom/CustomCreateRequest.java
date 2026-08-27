@@ -17,6 +17,7 @@ public class CustomCreateRequest {
   private LocalDate customDate;
   @PositiveOrZero
   private Integer cost;
+  private String imageUrl;
 
   public String getTitle() {
     return title;
@@ -48,5 +49,13 @@ public class CustomCreateRequest {
 
   public void setCost(Integer cost) {
     this.cost = cost;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

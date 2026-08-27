@@ -157,13 +157,15 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
       "id": 5,
       "title": "車高調交換",
       "customDate": "2026-08-05",
-      "cost": 120000
+      "cost": 120000,
+      "imageUrl": "https://example.com/syakocho.jpg"
     },
     {
       "id": 4,
       "title": "ホイール交換",
       "customDate": "2026-06-15",
-      "cost": 80000
+      "cost": 80000,
+      "imageUrl": null
     }
   ],
   "page": 0,
@@ -236,7 +238,8 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
   "title": "車高調交換",
   "description": "BLITZ DAMPER ZZ-Rを装着",
   "customDate": "2026-08-05",
-  "cost": 120000
+  "cost": 120000,
+  "imageUrl": "https://example.com/syakocho.jpg"
 }
 ```
 
@@ -300,7 +303,8 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
   "title": "車高調交換",
   "description": "減衰調整実施",
   "customDate": "2026-08-05",
-  "cost": 120000
+  "cost": 120000,
+  "imageUrl": "https://example.com/gensui.jpg"
 }
 ```
 

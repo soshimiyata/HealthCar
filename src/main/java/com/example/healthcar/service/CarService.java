@@ -32,13 +32,15 @@ public class CarService {
     car.setDescription(request.getDescription());
     car.setOdometer(request.getOdometer());
     car.setStatus(request.getStatus());
+    car.setImageUrl(request.getImageUrl());
 
     Car savedCar = carRepository.save(car);
 
     return new CarResponse(
         savedCar.getId(),
         savedCar.getMaker(),
-        savedCar.getCarModel());
+        savedCar.getCarModel(),
+        savedCar.getImageUrl());
   }
 
   public Page<CarResponse> getCars(
@@ -50,7 +52,8 @@ public class CarService {
         .map(car -> new CarResponse(
             car.getId(),
             car.getMaker(),
-            car.getCarModel()));
+            car.getCarModel(),
+            car.getImageUrl()));
   }
 
   public CarDetailResponse getCar(Long carId, Long userId) {
@@ -74,12 +77,14 @@ public class CarService {
     car.setDescription(request.getDescription());
     car.setOdometer(request.getOdometer());
     car.setStatus(request.getStatus());
+    car.setImageUrl(request.getImageUrl());
 
     Car updatedCar = carRepository.save(car);
 
     return new CarResponse(
         updatedCar.getId(),
         updatedCar.getMaker(),
-        updatedCar.getCarModel());
+        updatedCar.getCarModel(),
+        updatedCar.getImageUrl());
   }
 }

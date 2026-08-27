@@ -38,6 +38,9 @@ public class Car {
   @Column(name = "updated_at", nullable = false)
   private LocalDateTime updatedAt;
 
+  @Column(name = "image_url")
+  private String imageUrl;
+
   @PrePersist
   protected void onCreate() {
     LocalDateTime now = LocalDateTime.now();
@@ -116,5 +119,13 @@ public class Car {
 
   public LocalDateTime getUpdatedAt() {
     return updatedAt;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

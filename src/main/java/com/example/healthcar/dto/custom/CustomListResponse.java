@@ -10,17 +10,20 @@ public class CustomListResponse {
   private String title;
   private LocalDate customDate;
   private Integer cost;
+  private String imageUrl;
 
   public CustomListResponse(
       Long id,
       String title,
       LocalDate customDate,
-      Integer cost) {
+      Integer cost,
+      String imageUrl) {
 
     this.id = id;
     this.title = title;
     this.customDate = customDate;
     this.cost = cost;
+    this.imageUrl = imageUrl;
   }
 
   public Long getId() {
@@ -39,11 +42,16 @@ public class CustomListResponse {
     return cost;
   }
 
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
   public static CustomListResponse from(Custom custom) {
     return new CustomListResponse(
         custom.getId(),
         custom.getTitle(),
         custom.getCustomDate(),
-        custom.getCost());
+        custom.getCost(),
+        custom.getImageUrl());
   }
 }

@@ -12,6 +12,7 @@ public class MaintenanceListResponse {
   private LocalDate maintenanceDate;
   private Integer odometer;
   private Integer cost;
+  private String imageUrl;
 
   public MaintenanceListResponse(
       Long id,
@@ -19,7 +20,8 @@ public class MaintenanceListResponse {
       String maintenanceTypeName,
       LocalDate maintenanceDate,
       Integer odometer,
-      Integer cost) {
+      Integer cost,
+      String imageUrl) {
 
     this.id = id;
     this.maintenanceTypeId = maintenanceTypeId;
@@ -27,6 +29,7 @@ public class MaintenanceListResponse {
     this.maintenanceDate = maintenanceDate;
     this.odometer = odometer;
     this.cost = cost;
+    this.imageUrl = imageUrl;
   }
 
   public Long getId() {
@@ -53,6 +56,10 @@ public class MaintenanceListResponse {
     return cost;
   }
 
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
   public static MaintenanceListResponse from(Maintenance maintenance) {
     return new MaintenanceListResponse(
         maintenance.getId(),
@@ -60,6 +67,7 @@ public class MaintenanceListResponse {
         maintenance.getMaintenanceType().getName(),
         maintenance.getMaintenanceDate(),
         maintenance.getOdometer(),
-        maintenance.getCost());
+        maintenance.getCost(),
+        maintenance.getMaintenanceType().getImageUrl());
   }
 }

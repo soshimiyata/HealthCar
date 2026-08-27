@@ -11,19 +11,22 @@ public class CustomDetailResponse {
   private String description;
   private LocalDate customDate;
   private Integer cost;
+  private String imageUrl;
 
   public CustomDetailResponse(
       Long id,
       String title,
       String description,
       LocalDate customDate,
-      Integer cost) {
+      Integer cost,
+      String imageUrl) {
 
     this.id = id;
     this.title = title;
     this.description = description;
     this.customDate = customDate;
     this.cost = cost;
+    this.imageUrl = imageUrl;
   }
 
   public Long getId() {
@@ -46,12 +49,17 @@ public class CustomDetailResponse {
     return cost;
   }
 
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
   public static CustomDetailResponse from(Custom custom) {
     return new CustomDetailResponse(
         custom.getId(),
         custom.getTitle(),
         custom.getDescription(),
         custom.getCustomDate(),
-        custom.getCost());
+        custom.getCost(),
+        custom.getImageUrl());
   }
 }

@@ -25,7 +25,8 @@ public interface MaintenanceRepository
               m.description,
               m.maintenanceDate,
               m.odometer,
-              m.cost
+              m.cost,
+              mt.imageUrl
           )
           FROM Maintenance m
           JOIN MaintenanceType mt

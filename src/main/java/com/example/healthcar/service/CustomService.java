@@ -42,6 +42,7 @@ public class CustomService {
     custom.setDescription(request.getDescription());
     custom.setCustomDate(request.getCustomDate());
     custom.setCost(request.getCost());
+    custom.setImageUrl(request.getImageUrl());
 
     Custom savedCustom = customRepository.save(custom);
 
@@ -93,7 +94,7 @@ public class CustomService {
     custom.setDescription(request.getDescription());
     custom.setCustomDate(request.getCustomDate());
     custom.setCost(request.getCost());
-
+    custom.setImageUrl(request.getImageUrl());
     Custom updatedCustom = customRepository.save(custom);
 
     return CustomResponse.from(updatedCustom);

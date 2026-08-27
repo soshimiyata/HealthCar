@@ -1,6 +1,6 @@
 POST http://localhost:8080/api/cars
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg2ODAwMTE2LCJleHAiOjE3ODY4MDM3MTZ9.im6ZyYgP4MeZmfsj7trYoUc88_y_Kl4kJGaoPXmr8lAXMf6-qBrsi9QP4cxFIEDe
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NzU0MDgwLCJleHAiOjE3ODc3NTc2ODB9._oZH2ADpjhk_NeBOQUjLmrdqYd9u0J2_9Ri7PHqxDHh3FlhM7HgHD_ULFQqH0t2w
 
 {
   "maker": "MAZDA",
@@ -8,5 +8,6 @@ Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg2ODAwMTE2L
   "modelYear": 2016,
   "description": "普段乗り",
   "odometer": 82000,
-  "status": 0
+  "status": 0,
+  "imageUrl": "https://example.com/images/demio.jpg"
 }

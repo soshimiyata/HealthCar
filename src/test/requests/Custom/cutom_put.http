@@ -1,10 +1,11 @@
 PUT http://localhost:8080/api/cars/1/customs/1
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3NDEyMTAxLCJleHAiOjE3ODc0MTU3MDF9.WBEU1TJjDNtl0d_uqFpsvv7gau5PLgD5OPbKVdpyAdK7UUjReAf5KzKvFqLMsdWA
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzg3ODM5Mjc2LCJleHAiOjE3ODc4NDI4NzZ9.BZDrBGxFt0aDl8mMo0_exqDJWzpSqGFSytAzgZ-gQJDz98VjiRKQIsYA06am4lx4
 Content-Type: application/json
 
 {
   "title": "車高調交換",
   "description": "減衰調整実施",
   "customDate": "2026-08-05",
-  "cost": 120000
+  "cost": 120000,
+  "imageUrl": "https://example.com/syakocho1.jpg"
 }

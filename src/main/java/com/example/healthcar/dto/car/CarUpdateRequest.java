@@ -23,6 +23,7 @@ public class CarUpdateRequest {
   @Min(0)
   @Max(2)
   private Short status;
+  private String imageUrl;
 
   public String getMaker() {
     return maker;
@@ -70,5 +71,13 @@ public class CarUpdateRequest {
 
   public void setStatus(Short status) {
     this.status = status;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

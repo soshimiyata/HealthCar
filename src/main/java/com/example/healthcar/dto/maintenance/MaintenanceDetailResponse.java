@@ -13,6 +13,7 @@ public class MaintenanceDetailResponse {
   private LocalDate maintenanceDate;
   private Integer odometer;
   private Integer cost;
+  private String imageUrl;
 
   public MaintenanceDetailResponse(
       Long id,
@@ -21,7 +22,8 @@ public class MaintenanceDetailResponse {
       String description,
       LocalDate maintenanceDate,
       Integer odometer,
-      Integer cost) {
+      Integer cost,
+      String imageUrl) {
 
     this.id = id;
     this.maintenanceTypeId = maintenanceTypeId;
@@ -30,6 +32,7 @@ public class MaintenanceDetailResponse {
     this.maintenanceDate = maintenanceDate;
     this.odometer = odometer;
     this.cost = cost;
+    this.imageUrl = imageUrl;
   }
 
   public Long getId() {
@@ -58,5 +61,9 @@ public class MaintenanceDetailResponse {
 
   public Integer getCost() {
     return cost;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
   }
 }

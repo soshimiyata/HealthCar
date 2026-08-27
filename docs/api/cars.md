@@ -47,7 +47,8 @@
   "modelYear": 2016,
   "description": "普段乗り",
   "odometer": 82000,
-  "status": 0
+  "status": 0,
+  "imageUrl": "https://example.com/images/demio.jpg"
 }
 ```
 
@@ -191,12 +192,14 @@ GET /api/cars?page=0&size=20&sort=maker,asc
     {
       "id": 1,
       "maker": "MAZDA",
-      "carModel": "デミオ"
+      "carModel": "デミオ",
+      "imageUrl": "https://example.com/images/demio.jpg"
     },
     {
       "id": 2,
       "maker": "TOYOTA",
-      "carModel": "86"
+      "carModel": "86",
+      "imageUrl": null
     }
   ],
   "pageable": {
@@ -302,6 +305,7 @@ GET /api/cars?page=0&size=20&sort=maker,asc
   "description": "普段乗り",
   "odometer": 82000,
   "status": 0,
+  "imageUrl": "https://example.com/images/demio.jpg",
 
   "summary": {
     "maintenanceCount": 18,
@@ -410,7 +414,8 @@ GET /api/cars?page=0&size=20&sort=maker,asc
   "modelYear": 2019,
   "description": "メインカー",
   "odometer": 95000,
-  "status": 0
+  "status": 0,
+  "imageUrl": "https://example.com/images/MAZDA2.jpg"
 }
 ```
 
@@ -428,7 +433,8 @@ GET /api/cars?page=0&size=20&sort=maker,asc
   "modelYear": 2019,
   "description": "メインカー",
   "odometer": 95000,
-  "status": 0
+  "status": 0,
+  "imageUrl": "https://example.com/images/MAZDA2.jpg"
 }
 ```
 

@@ -11,6 +11,7 @@ public class CarDetailResponse {
   private String description;
   private Integer odometer;
   private Short status;
+  private String imageUrl;
 
   public CarDetailResponse(
       Long id,
@@ -19,7 +20,8 @@ public class CarDetailResponse {
       Integer modelYear,
       String description,
       Integer odometer,
-      Short status) {
+      Short status,
+      String imageUrl) {
 
     this.id = id;
     this.maker = maker;
@@ -28,6 +30,7 @@ public class CarDetailResponse {
     this.description = description;
     this.odometer = odometer;
     this.status = status;
+    this.imageUrl = imageUrl;
   }
 
   public static CarDetailResponse from(Car car) {
@@ -38,7 +41,8 @@ public class CarDetailResponse {
         car.getModelYear(),
         car.getDescription(),
         car.getOdometer(),
-        car.getStatus());
+        car.getStatus(),
+        car.getImageUrl());
   }
 
   public Long getId() {
@@ -67,5 +71,9 @@ public class CarDetailResponse {
 
   public Short getStatus() {
     return status;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
   }
 }

@@ -54,12 +54,9 @@ public class MaintenanceService {
 
     maintenance.setCarId(carId);
     maintenance.setMaintenanceType(maintenanceType);
-    maintenance.setDescription(
-        request.getDescription());
-    maintenance.setMaintenanceDate(
-        request.getMaintenanceDate());
-    maintenance.setOdometer(
-        request.getOdometer());
+    maintenance.setDescription(request.getDescription());
+    maintenance.setMaintenanceDate(request.getMaintenanceDate());
+    maintenance.setOdometer(request.getOdometer());
 
     if (request.getCost() != null) {
       maintenance.setCost(request.getCost());
@@ -92,7 +89,7 @@ public class MaintenanceService {
       Long maintenanceId,
       Long userId) {
 
-    // まず車両の所有者を確認
+    // 車両の所有者を確認
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
 
