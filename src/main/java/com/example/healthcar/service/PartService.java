@@ -55,14 +55,20 @@ public class PartService {
     return PartResponse.from(savedPart);
   }
 
-  public Page<PartListResponse> findParts(Long carId, Pageable pageable) {
+  public Page<PartListResponse> findParts(Long carId, Long userId, Pageable pageable) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
 
     return partRepository
         .findByCarId(carId, pageable)
         .map(PartListResponse::from);
   }
 
-  public PartDetailResponse getPartDetail(Long carId, Long partId) {
+  public PartDetailResponse getPartDetail(Long carId, Long userId, Long partId) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
 
     return partRepository
         .findDetail(partId, carId)
@@ -71,8 +77,12 @@ public class PartService {
 
   public PartUpdateResponse updatePart(
       Long carId,
+      Long userId,
       Long partId,
       PartUpdateRequest request) {
+
+    carRepository.findByIdAndUserId(carId, userId)
+        .orElseThrow(() -> new RuntimeException("Car not found"));
 
     Part part = partRepository
         .findByIdAndCarId(partId, carId)

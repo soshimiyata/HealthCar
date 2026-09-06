@@ -8,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import com.example.healthcar.dto.summary.SummaryData;
 
 import java.util.Optional;
+import java.util.List;
 
 public interface MaintenanceRepository
     extends JpaRepository<Maintenance, Long> {
@@ -37,4 +39,16 @@ public interface MaintenanceRepository
   Optional<MaintenanceDetailResponse> findDetail(
       @Param("maintenanceId") Long maintenanceId,
       @Param("carId") Long carId);
+
+  List<Maintenance> findTop3ByCarIdOrderByMaintenanceDateDesc(Long carId);
+
+  @Query("""
+      SELECT new com.example.healthcar.dto.summary.SummaryData(
+          COUNT(m),
+          COALESCE(SUM(m.cost), 0)
+      )
+      FROM Maintenance m
+      WHERE m.carId = :carId
+      """)
+  SummaryData findSummary(@Param("carId") Long carId);
 }

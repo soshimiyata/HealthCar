@@ -48,17 +48,23 @@ public class PartController {
   @GetMapping
   public Page<PartListResponse> getParts(
       @PathVariable Long carId,
-      Pageable pageable) {
+      Pageable pageable,
+      Authentication authentication) {
 
-    return partService.findParts(carId, pageable);
+    Long userId = Long.valueOf(authentication.getName());
+
+    return partService.findParts(carId, userId, pageable);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<PartDetailResponse> getPartDetail(
       @PathVariable Long carId,
-      @PathVariable Long id) {
+      @PathVariable Long id,
+      Authentication authentication) {
 
-    PartDetailResponse response = partService.getPartDetail(carId, id);
+    Long userId = Long.valueOf(authentication.getName());
+
+    PartDetailResponse response = partService.getPartDetail(carId, userId, id);
 
     return ResponseEntity.ok(response);
   }
@@ -67,9 +73,12 @@ public class PartController {
   public ResponseEntity<PartUpdateResponse> updatePart(
       @PathVariable Long carId,
       @PathVariable Long id,
-      @Valid @RequestBody PartUpdateRequest request) {
+      @Valid @RequestBody PartUpdateRequest request,
+      Authentication authentication) {
 
-    PartUpdateResponse response = partService.updatePart(carId, id, request);
+    Long userId = Long.valueOf(authentication.getName());
+
+    PartUpdateResponse response = partService.updatePart(carId, userId, id, request);
 
     return ResponseEntity.ok(response);
   }

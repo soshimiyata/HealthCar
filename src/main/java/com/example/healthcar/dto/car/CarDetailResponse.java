@@ -1,6 +1,12 @@
 package com.example.healthcar.dto.car;
 
 import com.example.healthcar.entity.Car;
+import java.util.List;
+
+import com.example.healthcar.dto.maintenance.MaintenanceListResponse;
+import com.example.healthcar.dto.custom.CustomListResponse;
+import com.example.healthcar.dto.part.PartListResponse;
+import com.example.healthcar.dto.carissue.CarIssueListResponse;
 
 public class CarDetailResponse {
 
@@ -12,6 +18,11 @@ public class CarDetailResponse {
   private Integer odometer;
   private Short status;
   private String imageUrl;
+  private CarSummaryResponse summary;
+  private List<MaintenanceListResponse> recentMaintenances;
+  private List<CustomListResponse> recentCustoms;
+  private List<PartListResponse> currentParts;
+  private List<CarIssueListResponse> recentCarIssues;
 
   public CarDetailResponse(
       Long id,
@@ -21,7 +32,12 @@ public class CarDetailResponse {
       String description,
       Integer odometer,
       Short status,
-      String imageUrl) {
+      String imageUrl,
+      CarSummaryResponse summary,
+      List<MaintenanceListResponse> recentMaintenances,
+      List<CustomListResponse> recentCustoms,
+      List<PartListResponse> currentParts,
+      List<CarIssueListResponse> recentCarIssues) {
 
     this.id = id;
     this.maker = maker;
@@ -31,18 +47,11 @@ public class CarDetailResponse {
     this.odometer = odometer;
     this.status = status;
     this.imageUrl = imageUrl;
-  }
-
-  public static CarDetailResponse from(Car car) {
-    return new CarDetailResponse(
-        car.getId(),
-        car.getMaker(),
-        car.getCarModel(),
-        car.getModelYear(),
-        car.getDescription(),
-        car.getOdometer(),
-        car.getStatus(),
-        car.getImageUrl());
+    this.summary = summary;
+    this.recentMaintenances = recentMaintenances;
+    this.recentCustoms = recentCustoms;
+    this.currentParts = currentParts;
+    this.recentCarIssues = recentCarIssues;
   }
 
   public Long getId() {
@@ -75,5 +84,25 @@ public class CarDetailResponse {
 
   public String getImageUrl() {
     return imageUrl;
+  }
+
+  public CarSummaryResponse getSummary() {
+    return summary;
+  }
+
+  public List<MaintenanceListResponse> getRecentMaintenances() {
+    return recentMaintenances;
+  }
+
+  public List<CustomListResponse> getRecentCustoms() {
+    return recentCustoms;
+  }
+
+  public List<PartListResponse> getCurrentParts() {
+    return currentParts;
+  }
+
+  public List<CarIssueListResponse> getRecentCarIssues() {
+    return recentCarIssues;
   }
 }
