@@ -229,6 +229,7 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 | description | String  | カスタム内容・メモ |
 | customDate  | Date    | 実施日       |
 | cost        | Integer | 費用(円)     |
+| recentCustoms  | Array   | 最近のカスタム（最大3件） |
 
 #### レスポンス例
 
@@ -239,7 +240,23 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
   "description": "BLITZ DAMPER ZZ-Rを装着",
   "customDate": "2026-08-05",
   "cost": 120000,
-  "imageUrl": "https://example.com/syakocho.jpg"
+  "imageUrl": "https://example.com/syakocho.jpg",
+  "recentCustoms": [
+    {
+      "id": 5,
+      "title": "車高調交換",
+      "customDate": "2026-08-05",
+      "cost": 120000,
+      "imageUrl": "https://example.com/syakocho.jpg"
+    },
+    {
+      "id": 4,
+      "title": "ホイール交換",
+      "customDate": "2026-06-15",
+      "cost": 80000,
+      "imageUrl": null
+    }
+  ]
 }
 ```
 

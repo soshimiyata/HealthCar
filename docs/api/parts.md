@@ -260,6 +260,7 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
 | description | String  | メモ      |
 | imageUrl | String | パーツ画像のURL |
 | status      | Short | 装着状態    |
+| currentParts | Array  | 最近のパーツ（最大5件） |
 
 #### レスポンス例
 
@@ -273,7 +274,31 @@ GET /api/cars/1/parts?page=0&size=20&sort=installedAt,desc&status=0&category=WHE
   "price": 80000,
   "description": "17インチ 8J +35",
   "imageUrl": "https://example.com/images/volcano.jpg",
-  "status": 0
+  "status": 0,
+  "content": [
+    {
+      "id": 1,
+      "category": 0,
+      "name": "OZ Racing Volcano",
+      "maker": "OZ Racing",
+      "installedAt": "2026-08-01",
+      "price": 80000,
+      "description": "17インチ 8J +35",
+      "imageUrl": "https://example.com/images/volcano.jpg",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "category": 2,
+      "name": "HKS Hi-Power",
+      "maker": "HKS",
+      "installedAt": "2026-07-15",
+      "price": 120000,
+      "description": null,
+      "imageUrl": "https://example.com/images/HKS.jpg",
+      "status": 0
+    }
+  ]
 }
 ```
 

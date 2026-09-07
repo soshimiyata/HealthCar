@@ -14,6 +14,8 @@ import com.example.healthcar.repository.CarRepository;
 import com.example.healthcar.repository.PartRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PartService {
 
@@ -70,9 +72,18 @@ public class PartService {
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
 
-    return partRepository
-        .findDetail(partId, carId)
+    PartDetailResponse detail = partRepository.findDetail(partId, carId)
         .orElseThrow(() -> new RuntimeException("Part not found"));
+
+    List<PartListResponse> currentParts = partRepository
+        .findTop5ByCarIdAndStatusOrderByInstalledAtDesc(carId, (short) 0)
+        .stream()
+        .map(PartListResponse::from)
+        .toList();
+
+    detail.setCurrentParts(currentParts);
+
+    return detail;
   }
 
   public PartUpdateResponse updatePart(

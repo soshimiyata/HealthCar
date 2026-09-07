@@ -120,13 +120,11 @@ public class CarService {
 
     SummaryData customSummary = customRepository.findSummary(carId);
 
-    System.out.println("customSummary: " + customSummary.getCount() + ", " + customSummary.getCost());
     int customCount = customSummary.getCount().intValue();
     int customCost = customSummary.getCost().intValue();
 
     SummaryData partSummary = partRepository.findSummary(carId);
 
-    System.out.println("partSummary: " + partSummary.getCount() + ", " + partSummary.getCost());
     int partsCount = partSummary.getCount().intValue();
     int partsCost = partSummary.getCost().intValue();
 

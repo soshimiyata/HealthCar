@@ -1,7 +1,9 @@
 package com.example.healthcar.dto.maintenance;
 
 import com.example.healthcar.entity.Maintenance;
+import com.example.healthcar.dto.maintenance.MaintenanceListResponse;
 
+import java.util.List;
 import java.time.LocalDate;
 
 public class MaintenanceDetailResponse {
@@ -14,6 +16,7 @@ public class MaintenanceDetailResponse {
   private Integer odometer;
   private Integer cost;
   private String imageUrl;
+  private List<MaintenanceListResponse> recentMaintenances;
 
   public MaintenanceDetailResponse(
       Long id,
@@ -65,5 +68,13 @@ public class MaintenanceDetailResponse {
 
   public String getImageUrl() {
     return imageUrl;
+  }
+
+  public List<MaintenanceListResponse> getRecentMaintenances() {
+    return recentMaintenances;
+  }
+
+  public void setRecentMaintenances(List<MaintenanceListResponse> recentMaintenances) {
+    this.recentMaintenances = recentMaintenances;
   }
 }

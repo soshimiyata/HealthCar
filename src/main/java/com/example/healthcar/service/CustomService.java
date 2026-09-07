@@ -12,6 +12,8 @@ import com.example.healthcar.repository.CarRepository;
 import com.example.healthcar.repository.CustomRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomService {
 
@@ -74,7 +76,16 @@ public class CustomService {
         .findByIdAndCarId(customId, carId)
         .orElseThrow(() -> new RuntimeException("Custom not found"));
 
-    return CustomDetailResponse.from(custom);
+    CustomDetailResponse detail = CustomDetailResponse.from(custom);
+
+    List<CustomListResponse> recentCustoms = customRepository.findTop3ByCarIdOrderByCustomDateDesc(carId)
+        .stream()
+        .map(CustomListResponse::from)
+        .toList();
+
+    detail.setRecentCustoms(recentCustoms);
+
+    return detail;
   }
 
   public CustomResponse updateCustom(

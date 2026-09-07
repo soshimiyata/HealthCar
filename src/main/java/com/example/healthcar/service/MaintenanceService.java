@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MaintenanceService {
 
@@ -93,9 +95,19 @@ public class MaintenanceService {
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
 
-    return maintenanceRepository
+    MaintenanceDetailResponse detail = maintenanceRepository
         .findDetail(maintenanceId, carId)
         .orElseThrow(() -> new RuntimeException("Maintenance not found"));
+
+    List<MaintenanceListResponse> recentMaintenances = maintenanceRepository
+        .findTop3ByCarIdOrderByMaintenanceDateDesc(carId)
+        .stream()
+        .map(MaintenanceListResponse::from)
+        .toList();
+
+    detail.setRecentMaintenances(recentMaintenances);
+
+    return detail;
   }
 
   public MaintenanceDetailResponse updateMaintenance(

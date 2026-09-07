@@ -12,30 +12,30 @@
 
 ### リクエストヘッダー
 
-| 項目            | 値                | 必須 | 説明          |
-| ------------- | ---------------- | -- | ----------- |
-| Content-Type  | application/json | ○  | JSON形式で送信   |
-| Authorization | Bearer {JWT}     | ○  | JWTアクセストークン |
+| 項目          | 値               | 必須 | 説明                |
+| ------------- | ---------------- | ---- | ------------------- |
+| Content-Type  | application/json | ○    | JSON形式で送信      |
+| Authorization | Bearer {JWT}     | ○    | JWTアクセストークン |
 
 ---
 
 ### パスパラメータ
 
-| 項目    | 型    | 必須 | 説明   |
-| ----- | ---- | -- | ---- |
-| carId | Long | ○  | 車両ID |
+| 項目  | 型   | 必須 | 説明   |
+| ----- | ---- | ---- | ------ |
+| carId | Long | ○    | 車両ID |
 
 ---
 
 ### リクエストボディ
 
-| 項目              | 型       | 必須 | 説明          |
-| --------------- | ------- | -- | ----------- |
-| maintenanceTypeId | Long    | ○  | メンテナンス種別ID  |
-| description     | String  | ×  | 作業内容・メモ     |
-| maintenanceDate | Date    | ○  | 実施日         |
-| odometer        | Integer | ×  | 実施時走行距離(km) |
-| cost            | Integer | ×  | 費用(円)       |
+| 項目              | 型      | 必須 | 説明               |
+| ----------------- | ------- | ---- | ------------------ |
+| maintenanceTypeId | Long    | ○    | メンテナンス種別ID |
+| description       | String  | ×    | 作業内容・メモ     |
+| maintenanceDate   | Date    | ○    | 実施日             |
+| odometer          | Integer | ×    | 実施時走行距離(km) |
+| cost              | Integer | ×    | 費用(円)           |
 
 #### リクエスト例
 
@@ -55,9 +55,9 @@
 
 ### 201 Created
 
-| 項目                | 型    | 説明         |
-| ----------------- | ---- | ---------- |
-| id                | Long | メンテナンスID   |
+| 項目              | 型   | 説明               |
+| ----------------- | ---- | ------------------ |
+| id                | Long | メンテナンスID     |
 | maintenanceTypeId | Long | メンテナンス種別ID |
 
 #### レスポンス例
@@ -68,27 +68,28 @@
   "maintenanceTypeId": 1
 }
 ```
+
 ---
 
 ## ステータスコード
 
-| コード | 説明       |
-| --- | -------- |
-| 201 | 登録成功     |
-| 400 | 入力値エラー   |
-| 401 | 未認証      |
-| 404 | 車両またはメンテナンス種別が存在しない |
+| コード | 説明                                   |
+| ------ | -------------------------------------- |
+| 201    | 登録成功                               |
+| 400    | 入力値エラー                           |
+| 401    | 未認証                                 |
+| 404    | 車両またはメンテナンス種別が存在しない |
 
 ---
 
 ## バリデーション
 
-| 項目              | 条件         |
-| --------------- | ---------- |
+| 項目              | 条件  |
+| ----------------- | ----- |
 | maintenanceTypeId | 必須  |
-| maintenanceDate | 必須         |
-| odometer        | 0以上        |
-| cost            | 0以上        |
+| maintenanceDate   | 必須  |
+| odometer          | 0以上 |
+| cost              | 0以上 |
 
 ---
 
@@ -106,27 +107,27 @@
 
 ### リクエストヘッダー
 
-| 項目            | 値            | 必須 | 説明          |
-| ------------- | ------------ | -- | ----------- |
-| Authorization | Bearer {JWT} | ○  | JWTアクセストークン |
+| 項目          | 値           | 必須 | 説明                |
+| ------------- | ------------ | ---- | ------------------- |
+| Authorization | Bearer {JWT} | ○    | JWTアクセストークン |
 
 ---
 
 ### パスパラメータ
 
-| 項目    | 型    | 必須 | 説明   |
-| ----- | ---- | -- | ---- |
-| carId | Long | ○  | 車両ID |
+| 項目  | 型   | 必須 | 説明   |
+| ----- | ---- | ---- | ------ |
+| carId | Long | ○    | 車両ID |
 
 ---
 
 ### クエリパラメータ
 
-| 項目   | 型       | 必須 | 説明                            |
-| ---- | ------- | -- | ----------------------------- |
-| page | Integer | ×  | ページ番号（0始まり、デフォルト0）            |
-| size | Integer | ×  | 取得件数（デフォルト20）                 |
-| sort | String  | ×  | ソート条件（例：maintenanceDate,desc） |
+| 項目 | 型      | 必須 | 説明                                   |
+| ---- | ------- | ---- | -------------------------------------- |
+| page | Integer | ×    | ページ番号（0始まり、デフォルト0）     |
+| size | Integer | ×    | 取得件数（デフォルト20）               |
+| sort | String  | ×    | ソート条件（例：maintenanceDate,desc） |
 
 #### リクエスト例
 
@@ -140,13 +141,13 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### 200 OK
 
-| 項目            | 型       | 説明       |
-| ------------- | ------- | -------- |
+| 項目          | 型      | 説明             |
+| ------------- | ------- | ---------------- |
 | content       | Array   | メンテナンス一覧 |
 | page          | Integer | 現在のページ番号 |
-| size          | Integer | 取得件数     |
-| totalElements | Long    | 総件数      |
-| totalPages    | Integer | 総ページ数    |
+| size          | Integer | 取得件数         |
+| totalElements | Long    | 総件数           |
+| totalPages    | Integer | 総ページ数       |
 
 #### レスポンス例
 
@@ -183,11 +184,11 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ## ステータスコード
 
-| コード | 説明       |
-| --- | -------- |
-| 200 | 取得成功     |
-| 401 | 未認証      |
-| 404 | 車両が存在しない |
+| コード | 説明             |
+| ------ | ---------------- |
+| 200    | 取得成功         |
+| 401    | 未認証           |
+| 404    | 車両が存在しない |
 
 ---
 
@@ -207,18 +208,18 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### リクエストヘッダー
 
-| 項目            | 値            | 必須 | 説明          |
-| ------------- | ------------ | -- | ----------- |
-| Authorization | Bearer {JWT} | ○  | JWTアクセストークン |
+| 項目          | 値           | 必須 | 説明                |
+| ------------- | ------------ | ---- | ------------------- |
+| Authorization | Bearer {JWT} | ○    | JWTアクセストークン |
 
 ---
 
 ### パスパラメータ
 
-| 項目 | 型    | 必須 | 説明       |
-| -- | ---- | -- | -------- |
-| carId | Long | ○ | 車両ID |
-| id | Long | ○ | メンテナンスID |
+| 項目  | 型   | 必須 | 説明           |
+| ----- | ---- | ---- | -------------- |
+| carId | Long | ○    | 車両ID         |
+| id    | Long | ○    | メンテナンスID |
 
 ---
 
@@ -226,15 +227,16 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### 200 OK
 
-| 項目                  | 型       | 説明          |
-| ------------------- | ------- | ----------- |
-| id                  | Long    | メンテナンスID    |
-| maintenanceTypeId   | Long    | メンテナンス種別ID  |
-| maintenanceTypeName | String  | メンテナンス種別名   |
-| description         | String  | 作業内容・メモ     |
-| maintenanceDate     | Date    | 実施日         |
-| odometer            | Integer | 実施時走行距離(km) |
-| cost                | Integer | 費用(円)       |
+| 項目                | 型      | 説明                          |
+| ------------------- | ------- | ----------------------------- |
+| id                  | Long    | メンテナンスID                |
+| maintenanceTypeId   | Long    | メンテナンス種別ID            |
+| maintenanceTypeName | String  | メンテナンス種別名            |
+| description         | String  | 作業内容・メモ                |
+| maintenanceDate     | Date    | 実施日                        |
+| odometer            | Integer | 実施時走行距離(km)            |
+| cost                | Integer | 費用(円)                      |
+| recentMaintenances  | Array   | 最近のメンテナンス（最大3件） |
 
 #### レスポンス例
 
@@ -247,7 +249,30 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
   "maintenanceDate": "2026-08-05",
   "odometer": 82500,
   "cost": 7800,
-  "imageUrl": "https://example.com/oilChange.jpg"
+  "imageUrl": "https://example.com/oilChange.jpg",
+  "recentMaintenances": [
+    {
+      "id": 1,
+      "maintenanceTypeName": "エンジンオイル交換",
+      "maintenanceDate": "2026-08-05",
+      "odometer": 82600,
+      "cost": 8500
+    },
+    {
+      "id": 2,
+      "maintenanceTypeName": "エアフィルター交換",
+      "maintenanceDate": "2026-06-15",
+      "odometer": 80200,
+      "cost": 3200
+    },
+    {
+      "id": 3,
+      "maintenanceTypeName": "タイヤローテーション",
+      "maintenanceDate": "2026-04-03",
+      "odometer": 78000,
+      "cost": 2200
+    }
+  ]
 }
 ```
 
@@ -255,11 +280,11 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ## ステータスコード
 
-| コード | 説明           |
-| --- | ------------ |
-| 200 | 取得成功         |
-| 401 | 未認証          |
-| 404 | メンテナンスが存在しない |
+| コード | 説明                     |
+| ------ | ------------------------ |
+| 200    | 取得成功                 |
+| 401    | 未認証                   |
+| 404    | メンテナンスが存在しない |
 
 ---
 
@@ -279,31 +304,31 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### リクエストヘッダー
 
-| 項目            | 値                | 必須 | 説明          |
-| ------------- | ---------------- | -- | ----------- |
-| Content-Type  | application/json | ○  | JSON形式で送信   |
-| Authorization | Bearer {JWT}     | ○  | JWTアクセストークン |
+| 項目          | 値               | 必須 | 説明                |
+| ------------- | ---------------- | ---- | ------------------- |
+| Content-Type  | application/json | ○    | JSON形式で送信      |
+| Authorization | Bearer {JWT}     | ○    | JWTアクセストークン |
 
 ---
 
 ### パスパラメータ
 
-| 項目 | 型    | 必須 | 説明       |
-| -- | ---- | -- | -------- |
-| carId | Long | ○ | 車両ID |
-| id | Long | ○ | メンテナンスID |
+| 項目  | 型   | 必須 | 説明           |
+| ----- | ---- | ---- | -------------- |
+| carId | Long | ○    | 車両ID         |
+| id    | Long | ○    | メンテナンスID |
 
 ---
 
 ### リクエストボディ
 
-| 項目                | 型       | 必須 | 説明          |
-| ----------------- | ------- | -- | ----------- |
-| maintenanceTypeId | Long    | ○  | メンテナンス種別ID  |
-| description       | String  | ×  | 作業内容・メモ     |
-| maintenanceDate   | Date    | ○  | 実施日         |
-| odometer          | Integer | ×  | 実施時走行距離(km) |
-| cost              | Integer | ×  | 費用(円)       |
+| 項目              | 型      | 必須 | 説明               |
+| ----------------- | ------- | ---- | ------------------ |
+| maintenanceTypeId | Long    | ○    | メンテナンス種別ID |
+| description       | String  | ×    | 作業内容・メモ     |
+| maintenanceDate   | Date    | ○    | 実施日             |
+| odometer          | Integer | ×    | 実施時走行距離(km) |
+| cost              | Integer | ×    | 費用(円)           |
 
 #### リクエスト例
 
@@ -323,12 +348,12 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### 200 OK
 
-| 項目                  | 型      | 説明         |
-| ------------------- | ------ | ---------- |
-| id                  | Long   | メンテナンスID   |
+| 項目                | 型     | 説明               |
+| ------------------- | ------ | ------------------ |
+| id                  | Long   | メンテナンスID     |
 | maintenanceTypeId   | Long   | メンテナンス種別ID |
-| maintenanceTypeName | String | メンテナンス種別名  |
-| maintenanceDate     | Date   | 実施日        |
+| maintenanceTypeName | String | メンテナンス種別名 |
+| maintenanceDate     | Date   | 実施日             |
 
 #### レスポンス例
 
@@ -345,23 +370,23 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ## ステータスコード
 
-| コード | 説明           |
-| --- | ------------ |
-| 200 | 更新成功         |
-| 400 | 入力値エラー       |
-| 401 | 未認証          |
-| 404 | メンテナンスが存在しない |
+| コード | 説明                     |
+| ------ | ------------------------ |
+| 200    | 更新成功                 |
+| 400    | 入力値エラー             |
+| 401    | 未認証                   |
+| 404    | メンテナンスが存在しない |
 
 ---
 
 ## バリデーション
 
-| 項目                | 条件              |
-| ----------------- | --------------- |
+| 項目              | 条件                           |
+| ----------------- | ------------------------------ |
 | maintenanceTypeId | 必須・存在するメンテナンス種別 |
-| maintenanceDate   | 必須              |
-| odometer          | 0以上             |
-| cost              | 0以上             |
+| maintenanceDate   | 必須                           |
+| odometer          | 0以上                          |
+| cost              | 0以上                          |
 
 ---
 
@@ -381,18 +406,18 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ### リクエストヘッダー
 
-| 項目            | 値            | 必須 | 説明          |
-| ------------- | ------------ | -- | ----------- |
-| Authorization | Bearer {JWT} | ○  | JWTアクセストークン |
+| 項目          | 値           | 必須 | 説明                |
+| ------------- | ------------ | ---- | ------------------- |
+| Authorization | Bearer {JWT} | ○    | JWTアクセストークン |
 
 ---
 
 ### パスパラメータ
 
-| 項目 | 型    | 必須 | 説明       |
-| -- | ---- | -- | -------- |
-| carId | Long | ○ | 車両ID |
-| id | Long | ○ | メンテナンスID |
+| 項目  | 型   | 必須 | 説明           |
+| ----- | ---- | ---- | -------------- |
+| carId | Long | ○    | 車両ID         |
+| id    | Long | ○    | メンテナンスID |
 
 ---
 
@@ -412,8 +437,8 @@ GET /api/cars/1/maintenances?page=0&size=20&sort=maintenanceDate,desc
 
 ## ステータスコード
 
-| コード | 説明           |
-| --- | ------------ |
-| 204 | 削除成功         |
-| 401 | 未認証          |
-| 404 | メンテナンスが存在しない |
+| コード | 説明                     |
+| ------ | ------------------------ |
+| 204    | 削除成功                 |
+| 401    | 未認証                   |
+| 404    | メンテナンスが存在しない |

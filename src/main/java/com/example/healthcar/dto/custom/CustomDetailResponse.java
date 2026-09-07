@@ -1,8 +1,10 @@
 package com.example.healthcar.dto.custom;
 
 import com.example.healthcar.entity.Custom;
+import com.example.healthcar.dto.custom.CustomListResponse;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class CustomDetailResponse {
 
@@ -12,6 +14,7 @@ public class CustomDetailResponse {
   private LocalDate customDate;
   private Integer cost;
   private String imageUrl;
+  private List<CustomListResponse> recentCustoms;
 
   public CustomDetailResponse(
       Long id,
@@ -51,6 +54,14 @@ public class CustomDetailResponse {
 
   public String getImageUrl() {
     return imageUrl;
+  }
+
+  public List<CustomListResponse> getRecentCustoms() {
+    return recentCustoms;
+  }
+
+  public void setRecentCustoms(List<CustomListResponse> recentCustoms) {
+    this.recentCustoms = recentCustoms;
   }
 
   public static CustomDetailResponse from(Custom custom) {

@@ -1,6 +1,9 @@
 package com.example.healthcar.dto.part;
 
+import com.example.healthcar.dto.part.PartListResponse;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public class PartDetailResponse {
 
@@ -13,6 +16,7 @@ public class PartDetailResponse {
   private String description;
   private String imageUrl;
   private Short status;
+  private List<PartListResponse> currentParts;
 
   public PartDetailResponse(
       Long id,
@@ -70,5 +74,13 @@ public class PartDetailResponse {
 
   public Short getStatus() {
     return status;
+  }
+
+  public List<PartListResponse> getCurrentParts() {
+    return currentParts;
+  }
+
+  public void setCurrentParts(List<PartListResponse> currentParts) {
+    this.currentParts = currentParts;
   }
 }
