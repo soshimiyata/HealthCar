@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -22,14 +25,18 @@ public class CarController {
     this.carService = carService;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CarResponse> createCar(
-      @Valid @RequestBody CarCreateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("car") CarCreateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    CarResponse response = carService.createCar(userId, request);
+    CarResponse response = carService.createCar(
+        userId,
+        request,
+        image);
 
     return ResponseEntity
         .status(201)

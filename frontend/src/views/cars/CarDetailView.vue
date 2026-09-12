@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getCar } from '@/services/carService'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const route = useRoute()
 
 const car = ref(null)
@@ -20,6 +22,14 @@ onMounted(async () => {
     <h1 class="text-3xl font-bold mb-6">
       {{ car.maker }} {{ car.carModel }}
     </h1>
+
+    <div v-if="car.imageUrl" class="mb-6">
+      <img
+        :src="`${API_BASE_URL}${car.imageUrl}`"
+        alt="車両画像"
+        class="w-full max-w-xl rounded-lg"
+      />
+    </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
       <h2 class="text-xl font-bold mb-4">

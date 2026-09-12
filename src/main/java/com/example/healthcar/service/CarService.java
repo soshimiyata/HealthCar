@@ -20,6 +20,14 @@ import com.example.healthcar.dto.part.PartListResponse;
 import com.example.healthcar.dto.carissue.CarIssueListResponse;
 import com.example.healthcar.dto.car.CarSummaryResponse;
 import com.example.healthcar.dto.summary.SummaryData;
+import com.example.healthcar.service.ImageService;
+
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Service
 public class CarService {
@@ -29,27 +37,32 @@ public class CarService {
   private final CustomRepository customRepository;
   private final PartRepository partRepository;
   private final CarIssueRepository carIssueRepository;
+  private final ImageService imageService;
 
   public CarService(
       CarRepository carRepository,
       MaintenanceRepository maintenanceRepository,
       CustomRepository customRepository,
       PartRepository partRepository,
-      CarIssueRepository carIssueRepository) {
+      CarIssueRepository carIssueRepository,
+      ImageService imageService) {
 
     this.carRepository = carRepository;
     this.maintenanceRepository = maintenanceRepository;
     this.customRepository = customRepository;
     this.partRepository = partRepository;
     this.carIssueRepository = carIssueRepository;
+    this.imageService = imageService;
   }
 
   public CarResponse createCar(
       Long userId,
-      CarCreateRequest request) {
+      CarCreateRequest request,
+      MultipartFile image) throws IOException {
+
+    String imageUrl = imageService.saveImage(image, "cars");
 
     Car car = new Car();
-
     car.setUserId(userId);
     car.setMaker(request.getMaker());
     car.setCarModel(request.getCarModel());
@@ -57,7 +70,7 @@ public class CarService {
     car.setDescription(request.getDescription());
     car.setOdometer(request.getOdometer());
     car.setStatus(request.getStatus());
-    car.setImageUrl(request.getImageUrl());
+    car.setImageUrl(imageUrl);
 
     Car savedCar = carRepository.save(car);
 

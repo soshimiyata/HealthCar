@@ -35,7 +35,7 @@ public class SecurityConfig {
         .cors(cors -> {
         })
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/users", "/api/auth/login", "/error").permitAll()
+            .requestMatchers("/api/users", "/api/auth/login", "/error", "/uploads/**").permitAll()
             .anyRequest().authenticated())
         .addFilterBefore(
             jwtAuthenticationFilter,
