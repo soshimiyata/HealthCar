@@ -23,17 +23,19 @@ onMounted(async () => {
         {{ maintenance.maintenanceTypeName }}
       </h2>
 
-      <p>メンテナンスID: {{ maintenance.id }}</p>
-
-      <p>メンテナンス種別ID: {{ maintenance.maintenanceTypeId }}</p>
-
       <p>実施日: {{ maintenance.maintenanceDate }}</p>
 
-      <p>走行距離: {{ maintenance.odometer }} km</p>
+      <p>実施時走行距離: {{ maintenance.odometer }} km</p>
 
       <p>費用: {{ maintenance.cost }} 円</p>
 
       <p>作業内容: {{ maintenance.description }}</p>
+
+      <!-- 実装予定 -->
+      <p>次回メンテナンス必要距離: {{ maintenance.nextMaintenanceDistance }} km</p>
+
+      <p>次回メンテナンス必要日: {{ maintenance.nextMaintenanceDate }}</p>
+      <!-- 実装予定 -->
     </div>
 
     <!-- 最近の履歴 -->
@@ -50,7 +52,7 @@ onMounted(async () => {
 
       <p>実施日: {{ item.maintenanceDate }}</p>
 
-      <p>走行距離: {{ item.odometer }} km</p>
+      <p>実施時走行距離: {{ item.odometer }} km</p>
 
       <p>費用: {{ item.cost }} 円</p>
     </div>
