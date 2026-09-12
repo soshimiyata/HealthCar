@@ -48,3 +48,22 @@ export async function createCar(formData) {
 
   return data
 }
+
+export async function updateCar(carId, formData) {
+  const token = localStorage.getItem('accessToken')
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/cars/${carId}`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    }
+  )
+
+  const data = await response.json()
+
+  return data
+}

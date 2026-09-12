@@ -1,27 +1,24 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { getCar } from '@/services/carService'
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { getCar } from "@/services/carService";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const route = useRoute()
+const route = useRoute();
 
-const car = ref(null)
+const car = ref(null);
 
 onMounted(async () => {
-  const response = await getCar(route.params.carId)
+  const response = await getCar(route.params.carId);
 
-  car.value = response
-})
+  car.value = response;
+});
 </script>
 
 <template>
   <div v-if="car">
-
-    <h1 class="text-3xl font-bold mb-6">
-      {{ car.maker }} {{ car.carModel }}
-    </h1>
+    <h1 class="text-3xl font-bold mb-6">{{ car.maker }} {{ car.carModel }}</h1>
 
     <div v-if="car.imageUrl" class="mb-6">
       <img
@@ -32,9 +29,7 @@ onMounted(async () => {
     </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-bold mb-4">
-        車両情報
-      </h2>
+      <h2 class="text-xl font-bold mb-4">車両情報</h2>
 
       <p>メーカー: {{ car.maker }}</p>
       <p>車種: {{ car.carModel }}</p>
@@ -42,12 +37,17 @@ onMounted(async () => {
       <p>走行距離: {{ car.odometer }} km</p>
       <p>メモ: {{ car.description }}</p>
       <p>状態: {{ car.status }}</p>
+
+      <RouterLink
+        :to="`/cars/${car.id}/edit`"
+        class="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white "
+      >
+        編集
+      </RouterLink>
     </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-bold mb-4">
-        集計
-      </h2>
+      <h2 class="text-xl font-bold mb-4">集計</h2>
 
       <p>メンテナンス件数: {{ car.summary.maintenanceCount }}</p>
       <p>カスタム件数: {{ car.summary.customCount }}</p>
@@ -75,61 +75,39 @@ onMounted(async () => {
     </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-bold mb-4">
-        最近のメンテナンス
-      </h2>
+      <h2 class="text-xl font-bold mb-4">最近のメンテナンス</h2>
 
-      <div
-        v-for="item in car.recentMaintenances"
-        :key="item.id"
-      >
+      <div v-for="item in car.recentMaintenances" :key="item.id">
         {{ item.maintenanceDate }}
         {{ item.maintenanceTypeName }}
       </div>
     </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-bold mb-4">
-        最近のカスタム
-      </h2>
+      <h2 class="text-xl font-bold mb-4">最近のカスタム</h2>
 
-      <div
-        v-for="item in car.recentCustoms"
-        :key="item.id"
-      >
+      <div v-for="item in car.recentCustoms" :key="item.id">
         {{ item.customDate }}
         {{ item.title }}
       </div>
     </div>
 
     <div class="bg-white border rounded-lg p-6 mb-6">
-      <h2 class="text-xl font-bold mb-4">
-        現在装着中のパーツ
-      </h2>
+      <h2 class="text-xl font-bold mb-4">現在装着中のパーツ</h2>
 
-      <div
-        v-for="item in car.currentParts"
-        :key="item.id"
-      >
+      <div v-for="item in car.currentParts" :key="item.id">
         {{ item.category }}
         {{ item.name }}
       </div>
     </div>
 
     <div class="bg-white border rounded-lg p-6">
-      <h2 class="text-xl font-bold mb-4">
-        不具合・気になる点
-      </h2>
+      <h2 class="text-xl font-bold mb-4">不具合・気になる点</h2>
 
-      <div
-        v-for="item in car.recentCarIssues"
-        :key="item.id"
-      >
+      <div v-for="item in car.recentCarIssues" :key="item.id">
         {{ item.title }}
-        status: {{ item.status }}
-        priority: {{ item.priority }}
+        status: {{ item.status }} priority: {{ item.priority }}
       </div>
     </div>
-
   </div>
 </template>

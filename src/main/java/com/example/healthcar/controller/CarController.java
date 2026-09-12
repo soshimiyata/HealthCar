@@ -65,15 +65,20 @@ public class CarController {
     return ResponseEntity.ok(response);
   }
 
-  @PutMapping("/{carId}")
+  @PutMapping(value = "/{carId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CarResponse> updateCar(
       @PathVariable Long carId,
-      @Valid @RequestBody CarUpdateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("car") CarUpdateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    CarResponse response = carService.updateCar(carId, userId, request);
+    CarResponse response = carService.updateCar(
+        carId,
+        userId,
+        request,
+        image);
 
     return ResponseEntity.ok(response);
   }

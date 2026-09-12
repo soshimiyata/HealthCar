@@ -171,7 +171,8 @@ public class CarService {
   public CarResponse updateCar(
       Long carId,
       Long userId,
-      CarUpdateRequest request) {
+      CarUpdateRequest request,
+      MultipartFile image) throws IOException {
 
     Car car = carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
@@ -182,7 +183,11 @@ public class CarService {
     car.setDescription(request.getDescription());
     car.setOdometer(request.getOdometer());
     car.setStatus(request.getStatus());
-    car.setImageUrl(request.getImageUrl());
+
+    if (image != null && !image.isEmpty()) {
+      String imageUrl = imageService.saveImage(image, "cars");
+      car.setImageUrl(imageUrl);
+    }
 
     Car updatedCar = carRepository.save(car);
 
