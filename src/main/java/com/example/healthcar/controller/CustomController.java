@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/cars/{carId}/customs")
@@ -76,12 +77,13 @@ public class CustomController {
     return ResponseEntity.ok(response);
   }
 
-  @PutMapping("/{customId}")
+  @PutMapping(value = "/{customId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CustomResponse> updateCustom(
       @PathVariable Long carId,
       @PathVariable Long customId,
-      @Valid @RequestBody CustomUpdateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("custom") CustomUpdateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
@@ -89,7 +91,8 @@ public class CustomController {
         customId,
         carId,
         userId,
-        request);
+        request,
+        image);
 
     return ResponseEntity.ok(response);
   }

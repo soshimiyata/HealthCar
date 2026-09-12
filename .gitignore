@@ -1,5 +1,7 @@
 # Maven
 target/
 
+uploads/
+
 # Environment / secrets
 .env

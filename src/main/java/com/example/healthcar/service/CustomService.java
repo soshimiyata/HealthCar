@@ -99,7 +99,8 @@ public class CustomService {
       Long customId,
       Long carId,
       Long userId,
-      CustomUpdateRequest request) {
+      CustomUpdateRequest request,
+      MultipartFile image) throws IOException {
 
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
@@ -112,7 +113,12 @@ public class CustomService {
     custom.setDescription(request.getDescription());
     custom.setCustomDate(request.getCustomDate());
     custom.setCost(request.getCost());
-    custom.setImageUrl(request.getImageUrl());
+
+    if (image != null && !image.isEmpty()) {
+      String imageUrl = imageService.saveImage(image, "customs");
+      custom.setImageUrl(imageUrl);
+    }
+
     Custom updatedCustom = customRepository.save(custom);
 
     return CustomResponse.from(updatedCustom);

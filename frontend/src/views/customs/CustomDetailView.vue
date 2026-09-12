@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getCustom } from "@/services/customService";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const route = useRoute();
 
@@ -32,12 +32,16 @@ onMounted(async () => {
       </h2>
 
       <p>カスタムID: {{ custom.id }}</p>
-
       <p>実施日: {{ custom.customDate }}</p>
-
       <p>費用: {{ custom.cost }} 円</p>
-
       <p>カスタム内容: {{ custom.description }}</p>
+
+      <RouterLink
+        :to="`/cars/${route.params.carId}/customs/${custom.id}/edit`"
+        class="inline-block mt-6 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white"
+      >
+        編集
+      </RouterLink>
     </div>
     <!-- 最近の履歴 -->
     <h2 class="text-2xl font-bold mt-8 mb-4">カスタム履歴</h2>
