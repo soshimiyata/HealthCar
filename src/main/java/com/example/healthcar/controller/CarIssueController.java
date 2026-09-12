@@ -13,6 +13,9 @@ import org.springframework.data.domain.Pageable;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 import java.net.URI;
 
@@ -26,15 +29,16 @@ public class CarIssueController {
     this.carIssueService = carIssueService;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CarIssueCreateResponse> createIssue(
       @PathVariable Long carId,
-      @Valid @RequestBody CarIssueCreateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("issue") CarIssueCreateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    CarIssueCreateResponse response = carIssueService.createIssue(carId, userId, request);
+    CarIssueCreateResponse response = carIssueService.createIssue(carId, userId, request, image);
 
     return ResponseEntity
         .created(URI.create(

@@ -12,24 +12,29 @@ import com.example.healthcar.repository.CarRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 @Service
 public class CarIssueService {
 
   private final CarIssueRepository carIssueRepository;
   private final CarRepository carRepository;
+  private final ImageService imageService;
 
   public CarIssueService(
       CarIssueRepository carIssueRepository,
-      CarRepository carRepository) {
+      CarRepository carRepository,
+      ImageService imageService) {
     this.carIssueRepository = carIssueRepository;
     this.carRepository = carRepository;
+    this.imageService = imageService;
   }
 
   public CarIssueCreateResponse createIssue(
       Long carId,
       Long userId,
-      CarIssueCreateRequest request) {
+      CarIssueCreateRequest request, MultipartFile image) throws IOException {
 
     // 車両の所有者チェック
     carRepository.findByIdAndUserId(carId, userId)
@@ -43,7 +48,10 @@ public class CarIssueService {
     issue.setDescription(request.getDescription());
     issue.setStatus(request.getStatus() != null ? request.getStatus() : (short) 0);
     issue.setPriority(request.getPriority() != null ? request.getPriority() : (short) 1);
-    issue.setImageUrl(request.getImageUrl());
+
+    String imageUrl = imageService.saveImage(image, "issues");
+
+    issue.setImageUrl(imageUrl);
     issue.setOccurredAt(request.getOccurredAt());
     issue.setResolvedAt(request.getResolvedAt());
 

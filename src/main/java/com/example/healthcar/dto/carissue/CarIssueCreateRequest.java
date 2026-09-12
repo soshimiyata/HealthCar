@@ -20,7 +20,6 @@ public class CarIssueCreateRequest {
   @Min(0)
   @Max(2)
   private Short priority;
-  private String imageUrl;
   private LocalDate occurredAt;
   private LocalDate resolvedAt;
 
@@ -56,14 +55,6 @@ public class CarIssueCreateRequest {
     this.priority = priority;
   }
 
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
   public LocalDate getOccurredAt() {
     return occurredAt;
   }
@@ -79,6 +70,7 @@ public class CarIssueCreateRequest {
   public void setResolvedAt(LocalDate resolvedAt) {
     this.resolvedAt = resolvedAt;
   }
+
   @AssertTrue
   public boolean isResolvedAtValid() {
     short effectiveStatus = status == null ? 0 : status;

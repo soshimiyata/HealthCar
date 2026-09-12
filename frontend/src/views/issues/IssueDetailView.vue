@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getIssue } from "@/services/issueService";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const route = useRoute();
 
 const issue = ref(null);
@@ -17,6 +19,15 @@ onMounted(async () => {
     <h1 class="text-3xl font-bold mb-6">不具合詳細</h1>
 
     <div v-if="issue" class="bg-white border rounded-lg p-6">
+
+      <div v-if="issue?.imageUrl" class="mb-6">
+        <img
+          :src="`${API_BASE_URL}${issue.imageUrl}`"
+          alt="不具合画像"
+          class="w-full max-w-xl rounded-lg"
+        />
+      </div>
+
       <h2 class="text-2xl font-bold mb-4">
         {{ issue.title }}
       </h2>
@@ -33,9 +44,6 @@ onMounted(async () => {
 
       <p>解決日: {{ issue.resolvedAt }}</p>
 
-      <div v-if="issue.imageUrl" class="mt-4">
-        <img :src="issue.imageUrl" alt="不具合画像" class="max-w-md rounded-lg" />
-      </div>
     </div>
   </div>
 </template>
