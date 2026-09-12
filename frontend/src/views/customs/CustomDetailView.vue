@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getCustom } from "@/services/customService";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const route = useRoute();
 
 const custom = ref(null);
@@ -15,6 +17,14 @@ onMounted(async () => {
 <template>
   <div>
     <h1 class="text-3xl font-bold mb-6">カスタム詳細</h1>
+
+    <div v-if="custom?.imageUrl" class="mb-6">
+      <img
+        :src="`${API_BASE_URL}${custom.imageUrl}`"
+        alt="カスタム画像"
+        class="w-full max-w-xl rounded-lg"
+      />
+    </div>
 
     <div v-if="custom" class="bg-white border rounded-lg p-6">
       <h2 class="text-xl font-bold mb-4">

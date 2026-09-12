@@ -35,6 +35,7 @@
 | description | String  | ×  | カスタム内容・メモ |
 | customDate  | Date    | ○  | 実施日       |
 | cost        | Integer | ×  | 費用(円)     |
+| imageUrl    | String  | ×  | 画像URL      |
 
 #### リクエスト例
 
@@ -43,7 +44,8 @@
   "title": "車高調交換",
   "description": "BLITZ DAMPER ZZ-Rを装着",
   "customDate": "2026-08-05",
-  "cost": 120000
+  "cost": 120000,
+  "imageUrl": "https://example.com/syakocho.jpg"
 }
 ```
 
@@ -89,6 +91,7 @@
 | title      | 必須・100文字以内 |
 | customDate | 必須         |
 | cost       | 0以上        |
+| imageUrl   | 任意 |
 
 ---
 
@@ -229,6 +232,7 @@ GET /api/cars/1/customs?page=0&size=20&sort=customDate,desc
 | description | String  | カスタム内容・メモ |
 | customDate  | Date    | 実施日       |
 | cost        | Integer | 費用(円)     |
+| imageUrl    | String  | 画像URL      |
 | recentCustoms  | Array   | 最近のカスタム（最大3件） |
 
 #### レスポンス例

@@ -25,3 +25,21 @@ export async function getCustom(carId, customId) {
 
   return data;
 }
+
+export async function createCustom(carId, formData) {
+  const token = localStorage.getItem("accessToken");
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/cars/${carId}/customs`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    }
+  );
+  const data = await response.json();
+
+  return data;
+}

@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
 
@@ -26,19 +28,25 @@ public class CustomController {
     this.customService = customService;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CustomResponse> createCustom(
       @PathVariable Long carId,
-      @Valid @RequestBody CustomCreateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("custom") CustomCreateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws Exception {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    CustomResponse response = customService.createCustom(carId, userId, request);
+    CustomResponse response = customService.createCustom(
+        carId,
+        userId,
+        request,
+        image);
 
     return ResponseEntity
         .created(URI.create(
-            "/api/cars/" + carId + "/customs/" + response.getId()))
+            "/api/cars/" + carId +
+                "/customs/" + response.getId()))
         .body(response);
   }
 

@@ -10,8 +10,11 @@ import org.springframework.data.domain.Pageable;
 import com.example.healthcar.entity.Custom;
 import com.example.healthcar.repository.CarRepository;
 import com.example.healthcar.repository.CustomRepository;
-import org.springframework.stereotype.Service;
+import com.example.healthcar.service.ImageService;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -19,32 +22,36 @@ public class CustomService {
 
   private final CarRepository carRepository;
   private final CustomRepository customRepository;
+  private final ImageService imageService;
 
   public CustomService(
       CarRepository carRepository,
-      CustomRepository customRepository) {
+      CustomRepository customRepository,
+      ImageService imageService) {
 
     this.carRepository = carRepository;
     this.customRepository = customRepository;
+    this.imageService = imageService;
   }
 
   public CustomResponse createCustom(
       Long carId,
       Long userId,
-      CustomCreateRequest request) {
+      CustomCreateRequest request,
+      MultipartFile image) throws IOException {
 
-    // 車両の所有者チェック
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
 
-    Custom custom = new Custom();
+    String imageUrl = imageService.saveImage(image, "customs");
 
+    Custom custom = new Custom();
     custom.setCarId(carId);
     custom.setTitle(request.getTitle());
     custom.setDescription(request.getDescription());
     custom.setCustomDate(request.getCustomDate());
     custom.setCost(request.getCost());
-    custom.setImageUrl(request.getImageUrl());
+    custom.setImageUrl(imageUrl);
 
     Custom savedCustom = customRepository.save(custom);
 
