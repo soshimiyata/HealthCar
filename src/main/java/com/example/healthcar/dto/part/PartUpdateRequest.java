@@ -25,8 +25,6 @@ public class PartUpdateRequest {
   @PositiveOrZero
   private Integer price;
   private String description;
-  @URL
-  private String imageUrl;
   @NotNull
   @Min(0)
   @Max(4)
@@ -78,14 +76,6 @@ public class PartUpdateRequest {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
   }
 
   public Short getStatus() {

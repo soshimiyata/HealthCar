@@ -41,6 +41,12 @@ onMounted(async () => {
       <p>メモ: {{ part.description }}</p>
       <p>ステータス: {{ part.status }}</p>
 
+      <RouterLink
+        :to="`/cars/${route.params.carId}/parts/${part.id}/edit`"
+        class="inline-block mt-6 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white">
+        編集
+      </RouterLink>
+
     </div>
 
     <!-- パーツ履歴 -->

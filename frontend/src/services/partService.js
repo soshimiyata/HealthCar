@@ -48,3 +48,22 @@ export async function createPart(carId, formData) {
 
   return data;
 }
+
+export async function updatePart(carId, partId, formData) {
+  const token = localStorage.getItem("accessToken");
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/cars/${carId}/parts/${partId}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    }
+  );
+
+  const data = await response.json();
+
+  return data;
+}

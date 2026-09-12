@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/cars/{carId}/parts")
@@ -72,16 +73,17 @@ public class PartController {
     return ResponseEntity.ok(response);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<PartUpdateResponse> updatePart(
       @PathVariable Long carId,
       @PathVariable Long id,
-      @Valid @RequestBody PartUpdateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("part") PartUpdateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    PartUpdateResponse response = partService.updatePart(carId, userId, id, request);
+    PartUpdateResponse response = partService.updatePart(carId, userId, id, request, image);
 
     return ResponseEntity.ok(response);
   }

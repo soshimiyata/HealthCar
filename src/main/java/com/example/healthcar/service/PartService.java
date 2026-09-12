@@ -16,6 +16,7 @@ import com.example.healthcar.repository.PartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -99,7 +100,8 @@ public class PartService {
       Long carId,
       Long userId,
       Long partId,
-      PartUpdateRequest request) {
+      PartUpdateRequest request,
+      MultipartFile image) throws IOException {
 
     carRepository.findByIdAndUserId(carId, userId)
         .orElseThrow(() -> new RuntimeException("Car not found"));
@@ -114,8 +116,12 @@ public class PartService {
     part.setInstalledAt(request.getInstalledAt());
     part.setPrice(request.getPrice());
     part.setDescription(request.getDescription());
-    part.setImageUrl(request.getImageUrl());
     part.setStatus(request.getStatus());
+
+    if (image != null && !image.isEmpty()) {
+      String imageUrl = imageService.saveImage(image, "parts");
+      part.setImageUrl(imageUrl);
+    }
 
     Part savedPart = partRepository.save(part);
 
