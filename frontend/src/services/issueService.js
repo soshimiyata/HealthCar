@@ -54,3 +54,22 @@ export async function createIssue(carId, formData) {
 
   return data;
 }
+
+export async function updateIssue(carId, issueId, formData) {
+  const token = localStorage.getItem("accessToken");
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/cars/${carId}/issues/${issueId}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    }
+  );
+
+  const data = await response.json();
+
+  return data;
+}

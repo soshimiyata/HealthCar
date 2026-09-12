@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getIssue } from "@/services/issueService";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const route = useRoute();
 
@@ -19,7 +19,6 @@ onMounted(async () => {
     <h1 class="text-3xl font-bold mb-6">不具合詳細</h1>
 
     <div v-if="issue" class="bg-white border rounded-lg p-6">
-
       <div v-if="issue?.imageUrl" class="mb-6">
         <img
           :src="`${API_BASE_URL}${issue.imageUrl}`"
@@ -44,6 +43,12 @@ onMounted(async () => {
 
       <p>解決日: {{ issue.resolvedAt }}</p>
 
+      <RouterLink
+        :to="`/cars/${route.params.carId}/issues/${issue.id}/edit`"
+        class="inline-block mt-6 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white"
+      >
+        編集
+      </RouterLink>
     </div>
   </div>
 </template>

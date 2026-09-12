@@ -72,12 +72,13 @@ public class CarIssueController {
     return ResponseEntity.ok(response);
   }
 
-  @PutMapping("{id}")
+  @PutMapping(value = "{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<CarIssueUpdateResponse> updateIssue(
       @PathVariable Long carId,
       @PathVariable Long id,
-      @Valid @RequestBody CarIssueUpdateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("issue") CarIssueUpdateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws IOException {
 
     Long userId = Long.valueOf(authentication.getName());
 
@@ -85,7 +86,8 @@ public class CarIssueController {
         carId,
         id,
         userId,
-        request);
+        request,
+        image);
 
     return ResponseEntity.ok(response);
   }
