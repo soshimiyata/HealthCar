@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getPart } from "@/services/partService";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const route = useRoute();
 
 const part = ref(null);
@@ -23,6 +25,14 @@ onMounted(async () => {
         {{ part.name }}
       </h2>
 
+    <div v-if="part?.imageUrl" class="mb-6">
+      <img
+        :src="`${API_BASE_URL}${part.imageUrl}`"
+        alt="パーツ画像"
+        class="w-full max-w-xl rounded-lg"
+      />
+    </div>
+
       <p>パーツID: {{ part.id }}</p>
       <p>カテゴリ: {{ part.category }}</p>
       <p>メーカー: {{ part.maker }}</p>
@@ -31,9 +41,6 @@ onMounted(async () => {
       <p>メモ: {{ part.description }}</p>
       <p>ステータス: {{ part.status }}</p>
 
-      <div v-if="part.imageUrl" class="mt-4">
-        <img :src="part.imageUrl" alt="パーツ画像" class="max-w-md rounded-lg" />
-      </div>
     </div>
 
     <!-- パーツ履歴 -->

@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
 
@@ -27,15 +29,16 @@ public class PartController {
     this.partService = partService;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<PartResponse> createPart(
       @PathVariable Long carId,
-      @Valid @RequestBody PartCreateRequest request,
-      Authentication authentication) {
+      @Valid @RequestPart("part") PartCreateRequest request,
+      @RequestPart(value = "image", required = false) MultipartFile image,
+      Authentication authentication) throws Exception {
 
     Long userId = Long.valueOf(authentication.getName());
 
-    PartResponse response = partService.createPart(carId, userId, request);
+    PartResponse response = partService.createPart(carId, userId, request, image);
 
     URI location = URI.create(
         "/api/cars/" + carId + "/parts/" + response.getId());

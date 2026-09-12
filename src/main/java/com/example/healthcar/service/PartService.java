@@ -6,6 +6,7 @@ import com.example.healthcar.dto.part.PartListResponse;
 import com.example.healthcar.dto.part.PartDetailResponse;
 import com.example.healthcar.dto.part.PartUpdateRequest;
 import com.example.healthcar.dto.part.PartUpdateResponse;
+import com.example.healthcar.service.ImageService;
 import com.example.healthcar.entity.Car;
 import com.example.healthcar.entity.Part;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import com.example.healthcar.repository.CarRepository;
 import com.example.healthcar.repository.PartRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,19 +23,23 @@ public class PartService {
 
   private final PartRepository partRepository;
   private final CarRepository carRepository;
+  private final ImageService imageService;
 
   public PartService(
       PartRepository partRepository,
-      CarRepository carRepository) {
+      CarRepository carRepository,
+      ImageService imageService) {
 
     this.partRepository = partRepository;
     this.carRepository = carRepository;
+    this.imageService = imageService;
   }
 
   public PartResponse createPart(
       Long carId,
       Long userId,
-      PartCreateRequest request) {
+      PartCreateRequest request,
+      MultipartFile image) throws Exception {
 
     Car car = carRepository
         .findByIdAndUserId(carId, userId)
@@ -49,7 +55,10 @@ public class PartService {
     part.setPrice(
         request.getPrice() != null ? request.getPrice() : 0);
     part.setDescription(request.getDescription());
-    part.setImageUrl(request.getImageUrl());
+
+    String imageUrl = imageService.saveImage(image, "parts");
+    part.setImageUrl(imageUrl);
+
     part.setStatus(request.getStatus());
 
     Part savedPart = partRepository.save(part);
